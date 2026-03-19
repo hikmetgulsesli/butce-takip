@@ -1,6 +1,0 @@
-STATUS: done
-BUILD_CMD: npm run build
-TEST_CMD: npm test (no test script configured)
-LINT_CMD: npm run lint
-CI_NOTES: React + Vite + TypeScript + Tailwind CSS project scaffolded. ESLint configured with flat config. Build produces dist/ folder. node_modules committed to repo.
-BASELINE: Build passes, lint passes (0 errors), project pushed to origin/main
