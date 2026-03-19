@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@400;600;700&amp;family=Nunito+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3b82f6",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sora": ["Sora", "sans-serif"],
+                        "nunito": ["Nunito Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<title>Ay Gezgini - Bütçe Takip</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-4 md:px-10 lg:px-40">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-10 rounded-xl bg-primary text-white">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</div>
+<div>
+<h2 class="font-sora text-lg font-bold leading-tight tracking-tight">Bütçe Takip</h2>
+<p class="font-nunito text-xs text-slate-500 dark:text-slate-400">Finansal Özgürlük</p>
+</div>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center justify-start py-12 px-4 md:px-10 lg:px-40">
+<div class="w-full max-w-4xl mb-8">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+<div>
+<h1 class="font-sora text-3xl font-bold text-slate-900 dark:text-white mb-2">Ay Gezgini</h1>
+<p class="font-nunito text-slate-500 dark:text-slate-400">Bütçe durumunuzu aylık bazda derinlemesine analiz edin.</p>
+</div>
+<div class="flex items-center gap-2 text-sm font-nunito font-semibold text-primary bg-primary/10 px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span>Mevcut Dönem</span>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-xl overflow-hidden">
+<div class="flex flex-col sm:flex-row items-center justify-between p-2 sm:p-4 gap-4">
+<button class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-primary/50 hover:text-primary transition-all duration-200 cursor-pointer group">
+<span class="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">chevron_left</span>
+<span class="font-nunito font-bold text-sm uppercase tracking-wider">Önceki Ay</span>
+</button>
+<div class="flex flex-col items-center text-center px-4">
+<span class="font-nunito text-xs font-bold text-primary uppercase tracking-[0.2em] mb-1">Seçili Dönem</span>
+<h2 class="font-sora text-2xl md:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
+                                    Mart 2026
+                                </h2>
+</div>
+<button class="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-primary/50 hover:text-primary transition-all duration-200 cursor-pointer group">
+<span class="font-nunito font-bold text-sm uppercase tracking-wider">Sonraki Ay</span>
+<span class="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="w-full max-w-4xl grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+<span class="material-symbols-outlined">trending_up</span>
+</div>
+<span class="font-nunito font-bold text-slate-500 dark:text-slate-400">Gelir</span>
+</div>
+<p class="font-sora text-2xl font-bold">₺45,250.00</p>
+</div>
+<div class="bg-white dark:bg-slate-800/50 p-6 rounded-2xl border border-slate-200 dark:border-slate-700">
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 rounded-lg bg-rose-500/10 text-rose-500">
+<span class="material-symbols-outlined">trending_down</span>
+</div>
+<span class="font-nunito font-bold text-slate-500 dark:text-slate-400">Gider</span>
+</div>
+<p class="font-sora text-2xl font-bold">₺32,120.00</p>
+</div>
+<div class="bg-primary/10 p-6 rounded-2xl border border-primary/20">
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<span class="font-nunito font-bold text-primary">Kalan</span>
+</div>
+<p class="font-sora text-2xl font-bold text-primary">₺13,130.00</p>
+</div>
+</div>
+<div class="w-full max-w-4xl mt-12 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-8 text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16"></div>
+<div class="absolute bottom-0 left-0 w-24 h-24 bg-primary/5 rounded-full -ml-12 -mb-12"></div>
+<h3 class="font-sora text-xl font-bold mb-4 relative z-10">Mart Ayı Özeti</h3>
+<p class="font-nunito text-slate-600 dark:text-slate-400 max-w-lg mx-auto mb-6 relative z-10">
+                        Bu ay harcamalarınız geçen aya göre %12 azaldı. Tasarruf hedefinize ulaşmak için ₺2,000 daha birikim yapabilirsiniz.
+                    </p>
+<div class="relative z-10">
+<div class="w-full bg-slate-100 dark:bg-slate-900 h-3 rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 71%;"></div>
+</div>
+<div class="flex justify-between mt-2 font-nunito text-xs font-bold text-slate-500">
+<span>Bütçe Kullanımı: %71</span>
+<span>Limit: ₺45,000</span>
+</div>
+</div>
+</div>
+</main>
+<footer class="px-6 py-8 md:px-10 lg:px-40 border-t border-slate-200 dark:border-slate-800 text-center">
+<p class="font-nunito text-sm text-slate-500 dark:text-slate-400">
+                    © 2026 Bütçe Takip Sistemi - Tüm Hakları Saklıdır.
+                </p>
+</footer>
+</div>
+</div>
+</body></html>

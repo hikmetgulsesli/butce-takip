@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hata - Kişisel Bütçe Takip</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&amp;family=Sora:wght@600&amp;family=Nunito+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#f20d0d",
+                        "background-light": "#f8f5f5",
+                        "background-dark": "#0f172a", /* Slate-900 equivalent */
+                        "card-dark": "#1e293b", /* Slate-800 equivalent */
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sora": ["Sora", "sans-serif"],
+                        "nunito": ["Nunito Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .font-sora { font-family: 'Sora', sans-serif; }
+        .font-nunito { font-family: 'Nunito Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark min-h-screen flex flex-col items-center justify-center transition-colors duration-300">
+<div class="layout-container flex h-full grow flex-col w-full items-center justify-center px-4">
+<header class="fixed top-0 left-0 w-full flex items-center justify-between border-b border-primary/10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md px-6 py-4 lg:px-40">
+<div class="flex items-center gap-3">
+<div class="flex items-center justify-center size-8 bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined text-xl">account_balance_wallet</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight font-display">Kişisel Bütçe Takip</h2>
+</div>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-200 dark:bg-card-dark text-slate-600 dark:text-slate-400 hover:bg-primary/20 hover:text-primary transition-all">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<main class="flex flex-col items-center justify-center w-full max-w-md">
+<div class="w-full bg-white dark:bg-card-dark rounded-xl shadow-2xl overflow-hidden border border-slate-200 dark:border-slate-700/50 p-8 flex flex-col items-center">
+<div class="mb-6 flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-5xl">error</span>
+</div>
+<div class="flex flex-col items-center gap-3 text-center mb-8">
+<h1 class="text-slate-900 dark:text-slate-50 text-2xl font-bold font-sora">Bir hata oluştu</h1>
+<p class="text-slate-600 dark:text-slate-400 text-base font-nunito leading-relaxed">
+                        İşlem sırasında beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.
+                    </p>
+</div>
+<div class="w-full space-y-4">
+<button class="w-full flex items-center justify-center gap-2 rounded-lg h-12 bg-primary hover:bg-primary/90 text-white text-sm font-bold transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-lg">refresh</span>
+<span class="font-display">Tekrar Dene</span>
+</button>
+<button class="w-full flex items-center justify-center rounded-lg h-12 bg-transparent border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-semibold transition-all">
+<span class="font-display">Ana Sayfaya Dön</span>
+</button>
+</div>
+<div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-700/50 w-full text-center">
+<p class="text-slate-400 dark:text-slate-500 text-xs font-mono tracking-widest uppercase">Hata Kodu: ERR_500</p>
+</div>
+</div>
+<div class="mt-8 flex items-center gap-2 text-slate-400 dark:text-slate-600 text-sm">
+<span class="material-symbols-outlined text-sm">support_agent</span>
+<span>Destek ekibiyle iletişime geçin</span>
+</div>
+</main>
+<div class="fixed bottom-8 opacity-20 pointer-events-none">
+<div class="flex gap-4">
+<div class="w-32 h-32 bg-primary rounded-full blur-[80px]"></div>
+<div class="w-32 h-32 bg-primary rounded-full blur-[80px]"></div>
+</div>
+</div>
+</div>
+</body></html>

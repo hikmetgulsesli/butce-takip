@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@600;700&amp;family=Nunito+Sans:wght@400;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3d84f5",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#101722",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"],
+                        "sora": ["Sora", "sans-serif"],
+                        "nunito": ["Nunito Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased">
+<!-- Top Navigation Bar (Integrated from components) -->
+<header class="w-full border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary text-2xl">account_balance_wallet</span>
+</div>
+<h1 class="text-slate-900 dark:text-slate-100 text-xl font-bold font-sora tracking-tight">Bütçe Takibi</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors cursor-pointer">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center overflow-hidden">
+<img alt="Profil" class="w-full h-full object-cover" data-alt="User profile avatar photo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7VhjTLz88H7mGjCb62kSwYYMzmbeHySQWOMh8eYDOM8QECZ4wQEBt3PY2e2gZ3nwuE46mUQoenjamwMQw4Lja8X-TYFjThSkPFlpIz9Vsc5ffevIOHSOMBRf1UBF5-OBneG18eiu-K0htqPBQf0bs1jEk4v0d22zUgXNAE7THBMlUQap8fGML6zUuBW0Mfb83COaRQoYMY9cUmRAcHFuvlC-6lK3N37yUufHw-PpQ_7qK5SodrIxdz-EnaAK15ETG6jztMEZEzl4"/>
+</div>
+</div>
+</header>
+<main class="min-h-[calc(100vh-73px)] p-8 flex flex-col items-center justify-start relative">
+<!-- Mock Content Background (Dashboard View) -->
+<div class="w-full max-w-4xl opacity-40 pointer-events-none">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+<div class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-slate-500 text-sm mb-1">Toplam Bakiye</p>
+<p class="text-2xl font-bold text-slate-900 dark:text-slate-100 font-sora">₺12,450.00</p>
+</div>
+<div class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-slate-500 text-sm mb-1">Aylık Gelir</p>
+<p class="text-2xl font-bold text-emerald-500 font-sora">₺8,200.00</p>
+</div>
+<div class="p-6 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<p class="text-slate-500 text-sm mb-1">Aylık Gider</p>
+<p class="text-2xl font-bold text-rose-500 font-sora">₺3,750.00</p>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+<div class="p-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<h2 class="font-bold text-slate-900 dark:text-slate-100">Son İşlemler</h2>
+</div>
+<div class="divide-y divide-slate-200 dark:divide-slate-800">
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
+<span class="material-symbols-outlined text-slate-500">shopping_cart</span>
+</div>
+<div>
+<p class="font-semibold text-slate-900 dark:text-slate-100">Market Alışverişi</p>
+<p class="text-xs text-slate-500">14 Mart 2024</p>
+</div>
+</div>
+<p class="font-bold text-rose-500">-₺450.00</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Delete Confirmation Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
+<!-- Modal Card -->
+<div class="w-full max-w-md bg-slate-800 border border-slate-700 rounded-xl shadow-2xl overflow-hidden transform transition-all">
+<div class="p-6">
+<div class="flex flex-col items-center text-center">
+<!-- Warning Icon -->
+<div class="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-rose-500/10 text-rose-500">
+<span class="material-symbols-outlined text-4xl">warning</span>
+</div>
+<!-- Title -->
+<h3 class="text-2xl font-bold text-slate-100 font-sora mb-2">İşlemi Sil</h3>
+<!-- Body text -->
+<p class="text-slate-300 font-nunito leading-relaxed text-base">
+                            Bu işlemi silmek istediğinize emin misiniz? Bu işlem geri alınamaz ve tüm ilişkili veriler kalıcı olarak kaldırılacaktır.
+                        </p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="bg-slate-900/50 px-6 py-4 flex flex-col sm:flex-row gap-3">
+<button class="flex-1 px-4 py-3 rounded-lg border border-slate-600 bg-slate-700 hover:bg-slate-600 text-slate-100 font-semibold transition-all cursor-pointer flex items-center justify-center gap-2">
+<span>İptal</span>
+</button>
+<button class="flex-1 px-4 py-3 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-semibold shadow-lg shadow-rose-900/20 transition-all cursor-pointer flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">delete</span>
+<span>Sil</span>
+</button>
+</div>
+<!-- Close "X" Button (Optional, for better UX) -->
+<button class="absolute top-4 right-4 text-slate-400 hover:text-slate-200 transition-colors cursor-pointer">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+</div>
+</main>
+</body></html>

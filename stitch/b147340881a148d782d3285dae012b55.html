@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gider Analizi - Bütçe Takip</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600&amp;family=Nunito+Sans:wght@400;500&amp;family=Inter:wght@400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3b82f6",
+                        "background-light": "#f8fafc",
+                        "background-dark": "#0f172a",
+                        "surface": "#1e293b",
+                        "income": "#22c55e",
+                        "expense": "#ef4444",
+                    },
+                    fontFamily: {
+                        "display": ["Sora", "sans-serif"],
+                        "body": ["Nunito Sans", "sans-serif"],
+                        "inter": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+        }
+        h1, h2, h3 {
+            font-family: 'Sora', sans-serif;
+        }
+        .donut-segment {
+            transition: stroke-dasharray 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-50 min-h-screen">
+<div class="max-w-[480px] mx-auto min-h-screen flex flex-col bg-background-light dark:bg-background-dark shadow-2xl relative overflow-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between px-6 py-6 sticky top-0 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md z-10 border-b border-slate-200 dark:border-slate-800">
+<button class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary transition-colors group">
+<span class="material-symbols-outlined text-[20px] group-hover:-translate-x-1 transition-transform">arrow_back</span>
+<span class="text-sm font-semibold">Geri</span>
+</button>
+<h1 class="text-lg font-semibold tracking-tight">Gider Analizi</h1>
+<button class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">more_horiz</span>
+</button>
+</header>
+<main class="flex-1 px-6 py-4 space-y-8">
+<!-- Month Navigator -->
+<div class="flex items-center justify-between bg-slate-100 dark:bg-surface p-2 rounded-2xl border border-slate-200 dark:border-slate-800">
+<button class="p-2 hover:bg-white dark:hover:bg-slate-700 rounded-xl transition-all shadow-sm">
+<span class="material-symbols-outlined text-primary">chevron_left</span>
+</button>
+<div class="text-center">
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-widest">DÖNEM</p>
+<p class="font-display text-sm font-semibold">Ekim 2023</p>
+</div>
+<button class="p-2 hover:bg-white dark:hover:bg-slate-700 rounded-xl transition-all shadow-sm">
+<span class="material-symbols-outlined text-primary">chevron_right</span>
+</button>
+</div>
+<!-- Summary Text -->
+<div class="text-center px-4">
+<p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Bu ay toplam <span class="font-bold text-slate-900 dark:text-white underline decoration-expense/30 decoration-4">22.450 TL</span> harcama yaptınız.
+                </p>
+</div>
+<!-- Chart Section -->
+<div class="relative flex justify-center py-4">
+<div class="relative w-64 h-64 flex items-center justify-center">
+<!-- SVG Donut Chart Mockup -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 100 100">
+<!-- Background Circle -->
+<circle class="text-slate-200 dark:text-slate-800/50" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-width="12"></circle>
+<!-- Segments (Simulated) -->
+<circle class="donut-segment" cx="50" cy="50" fill="transparent" r="40" stroke="#3b82f6" stroke-dasharray="113 251.2" stroke-dashoffset="0" stroke-width="12"></circle> <!-- Yemek 45% -->
+<circle class="donut-segment" cx="50" cy="50" fill="transparent" r="40" stroke="#f59e0b" stroke-dasharray="50 251.2" stroke-dashoffset="-113" stroke-width="12"></circle> <!-- Ulaşım 20% -->
+<circle class="donut-segment" cx="50" cy="50" fill="transparent" r="40" stroke="#ef4444" stroke-dasharray="38 251.2" stroke-dashoffset="-163" stroke-width="12"></circle> <!-- Fatura 15% -->
+<circle class="donut-segment" cx="50" cy="50" fill="transparent" r="40" stroke="#8b5cf6" stroke-dasharray="25 251.2" stroke-dashoffset="-201" stroke-width="12"></circle> <!-- Eğlence 10% -->
+<circle class="donut-segment" cx="50" cy="50" fill="transparent" r="40" stroke="#10b981" stroke-dasharray="15 251.2" stroke-dashoffset="-226" stroke-width="12"></circle> <!-- Sağlık 6% -->
+<circle class="donut-segment" cx="50" cy="50" fill="transparent" r="40" stroke="#64748b" stroke-dasharray="10 251.2" stroke-dashoffset="-241" stroke-width="12"></circle> <!-- Diğer 4% -->
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center">
+<span class="text-slate-500 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider">Toplam Gider</span>
+<span class="font-display text-2xl font-bold tracking-tight">22.450 TL</span>
+</div>
+</div>
+</div>
+<!-- Category Details -->
+<div class="space-y-3 pb-10">
+<h3 class="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-widest px-1">Kategoriler</h3>
+<!-- Category Item: Yemek -->
+<div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-surface border border-slate-200 dark:border-slate-800 rounded-2xl hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+<div>
+<p class="font-semibold text-sm">Yemek</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">12 İşlem</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-sm">10.000 TL</p>
+<p class="text-xs font-medium text-blue-500">%45</p>
+</div>
+</div>
+<!-- Category Item: Ulaşım -->
+<div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-surface border border-slate-200 dark:border-slate-800 rounded-2xl hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center">
+<span class="material-symbols-outlined">directions_car</span>
+</div>
+<div>
+<p class="font-semibold text-sm">Ulaşım</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">8 İşlem</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-sm">4.500 TL</p>
+<p class="text-xs font-medium text-amber-500">%20</p>
+</div>
+</div>
+<!-- Category Item: Fatura -->
+<div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-surface border border-slate-200 dark:border-slate-800 rounded-2xl hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div>
+<p class="font-semibold text-sm">Fatura</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">4 İşlem</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-sm">3.400 TL</p>
+<p class="text-xs font-medium text-red-500">%15</p>
+</div>
+</div>
+<!-- Category Item: Eğlence -->
+<div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-surface border border-slate-200 dark:border-slate-800 rounded-2xl hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center">
+<span class="material-symbols-outlined">celebration</span>
+</div>
+<div>
+<p class="font-semibold text-sm">Eğlence</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">5 İşlem</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-sm">2.250 TL</p>
+<p class="text-xs font-medium text-purple-500">%10</p>
+</div>
+</div>
+<!-- Category Item: Sağlık -->
+<div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-surface border border-slate-200 dark:border-slate-800 rounded-2xl hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-xl bg-emerald-500/10 text-emerald-500 flex items-center justify-center">
+<span class="material-symbols-outlined">medical_services</span>
+</div>
+<div>
+<p class="font-semibold text-sm">Sağlık</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">2 İşlem</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-sm">1.400 TL</p>
+<p class="text-xs font-medium text-emerald-500">%6</p>
+</div>
+</div>
+<!-- Category Item: Diğer -->
+<div class="flex items-center justify-between p-4 bg-slate-50 dark:bg-surface border border-slate-200 dark:border-slate-800 rounded-2xl hover:scale-[1.02] transition-transform cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="size-10 rounded-xl bg-slate-500/10 text-slate-500 flex items-center justify-center">
+<span class="material-symbols-outlined">category</span>
+</div>
+<div>
+<p class="font-semibold text-sm">Diğer</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">6 İşlem</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-bold text-sm">900 TL</p>
+<p class="text-xs font-medium text-slate-500">%4</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Mockup -->
+<nav class="sticky bottom-0 bg-white/80 dark:bg-background-dark/80 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 flex items-center justify-around py-3 px-6">
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="text-[10px] font-bold">Ana Sayfa</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined fill-[1]">pie_chart</span>
+<span class="text-[10px] font-bold">Analiz</span>
+</button>
+<div class="relative -top-8">
+<button class="size-14 bg-primary text-white rounded-full flex items-center justify-center shadow-lg shadow-primary/40 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span class="text-[10px] font-bold">Cüzdan</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">Ayarlar</span>
+</button>
+</nav>
+<!-- Background Decor -->
+<div class="absolute top-0 right-0 -mr-16 -mt-16 size-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="absolute bottom-0 left-0 -ml-16 -mb-16 size-64 bg-expense/5 rounded-full blur-3xl pointer-events-none"></div>
+</div>
+</body></html>

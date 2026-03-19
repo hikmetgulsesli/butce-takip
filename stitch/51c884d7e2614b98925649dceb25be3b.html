@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>İşlem Ekle - Bütçe Takip</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600&amp;family=Nunito+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3b82f6",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f172a",
+                        "income": "#22c55e",
+                        "expense": "#ef4444",
+                        "card-bg": "#1e293b",
+                        "border-muted": "#334155"
+                    },
+                    fontFamily: {
+                        "display": ["Sora", "sans-serif"],
+                        "body": ["Nunito Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+        }
+        h1, h2, h3 {
+            font-family: 'Sora', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex items-center justify-center p-4">
+<!-- Main Form Container -->
+<div class="w-full max-w-lg bg-white dark:bg-card-bg rounded-2xl shadow-2xl border border-slate-200 dark:border-border-muted overflow-hidden transition-all duration-200">
+<!-- Header -->
+<header class="flex items-center justify-between px-8 py-6 border-b border-slate-200 dark:border-border-muted bg-slate-50/50 dark:bg-slate-800/50">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
+</div>
+<h2 class="text-xl font-semibold tracking-tight">İşlem Ekle</h2>
+</div>
+<button class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors p-1">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<form class="p-8 space-y-6">
+<!-- Type Selector (Toggle) -->
+<div class="space-y-3">
+<p class="text-sm font-medium text-slate-500 dark:text-slate-400 ml-1">İşlem Tipi</p>
+<div class="flex p-1.5 bg-slate-100 dark:bg-slate-900/50 rounded-xl border border-slate-200 dark:border-border-muted">
+<label class="flex-1 cursor-pointer group">
+<input checked="" class="peer hidden" name="transaction_type" type="radio" value="expense"/>
+<div class="flex items-center justify-center gap-2 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 transition-all duration-200 peer-checked:bg-white dark:peer-checked:bg-slate-800 peer-checked:text-expense peer-checked:shadow-sm font-bold">
+<span class="material-symbols-outlined text-[20px]">trending_down</span>
+<span>Gider</span>
+</div>
+</label>
+<label class="flex-1 cursor-pointer group">
+<input class="peer hidden" name="transaction_type" type="radio" value="income"/>
+<div class="flex items-center justify-center gap-2 py-2.5 rounded-lg text-slate-500 dark:text-slate-400 transition-all duration-200 peer-checked:bg-white dark:peer-checked:bg-slate-800 peer-checked:text-income peer-checked:shadow-sm font-bold">
+<span class="material-symbols-outlined text-[20px]">trending_up</span>
+<span>Gelir</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Amount Input -->
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-500 dark:text-slate-400 ml-1" for="amount">Miktar<!--"label-->
+<div class="relative">
+<input class="w-full h-14 pl-4 pr-12 bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-border-muted rounded-xl text-xl font-bold focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all placeholder:text-slate-400" id="amount" name="amount" placeholder="0,00" type="text"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-lg">
+                        TL
+                    </div>
+</div>
+</label></div>
+<!-- Category & Date Row -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<!-- Category Dropdown -->
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-500 dark:text-slate-400 ml-1" for="category">Kategori</label>
+<div class="relative">
+<select class="w-full h-12 pl-4 pr-10 bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-border-muted rounded-xl appearance-none focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all cursor-pointer" id="category" name="category">
+<option disabled="" selected="" value="">Kategori Seçin</option>
+<!-- Expense Categories (Default) -->
+<option value="yemek">Yemek</option>
+<option value="ulasim">Ulaşım</option>
+<option value="fatura">Fatura</option>
+<option value="eglence">Eğlence</option>
+<option value="saglik">Sağlık</option>
+<option value="diger">Diğer</option>
+</select>
+<div class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Date Picker -->
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-500 dark:text-slate-400 ml-1" for="date">Tarih</label>
+<div class="relative">
+<input class="w-full h-12 pl-10 pr-4 bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-border-muted rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all cursor-pointer" id="date" name="date" type="text" value="24.05.2024"/>
+<div class="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Description -->
+<div class="space-y-2">
+<label class="text-sm font-medium text-slate-500 dark:text-slate-400 ml-1" for="description">Açıklama <span class="text-xs opacity-60 font-normal">(opsiyonel)</span></label>
+<textarea class="w-full p-4 bg-slate-50 dark:bg-slate-900/40 border border-slate-200 dark:border-border-muted rounded-xl focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all resize-none placeholder:text-slate-400" id="description" name="description" placeholder="Harcama detaylarını buraya yazabilirsiniz..." rows="3"></textarea>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-4 pt-2">
+<button class="flex-1 h-12 rounded-xl font-bold text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all duration-200 cursor-pointer" type="button">
+                    İptal
+                </button>
+<!-- This button style should dynamically change based on radio selection, using 'bg-expense' as default since Gider is checked -->
+<button class="flex-[2] h-12 rounded-xl font-bold text-white bg-expense hover:opacity-90 shadow-lg shadow-expense/20 transition-all duration-200 cursor-pointer flex items-center justify-center gap-2" type="submit">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+                    Kaydet
+                </button>
+</div>
+</form>
+<!-- Footer Info -->
+<div class="px-8 py-4 bg-slate-50 dark:bg-slate-800/30 border-t border-slate-200 dark:border-border-muted flex items-center justify-between text-[11px] text-slate-400 uppercase tracking-widest font-bold">
+<span>Son Güncelleme: Az Önce</span>
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-income"></div>
+<div class="w-2 h-2 rounded-full bg-expense"></div>
+</div>
+</div>
+</div>
+<!-- Background Decoration -->
+<div class="fixed top-0 left-0 w-full h-full -z-10 opacity-30 pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 rounded-full blur-[120px]"></div>
+<div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-expense/10 rounded-full blur-[120px]"></div>
+</div>
+</body></html>

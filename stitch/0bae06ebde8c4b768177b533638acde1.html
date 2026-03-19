@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="tr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Sora:wght@600;700&amp;family=Nunito+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2977f5",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f172a", // Slate-900 equivalent
+                        "card-dark": "#1e293b", // Slate-800 equivalent
+                    },
+                    fontFamily: {
+                        "display": ["Sora", "sans-serif"],
+                        "body": ["Nunito Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Nunito Sans', sans-serif;
+        }
+        h1, h2, .font-sora {
+            font-family: 'Sora', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<div class="relative flex h-screen w-full flex-col overflow-x-hidden">
+<header class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-6 py-4 lg:px-20">
+<div class="flex items-center gap-3">
+<div class="p-2 bg-primary/10 rounded-lg text-primary">
+<span class="material-symbols-outlined text-2xl">account_balance_wallet</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight font-display">Kisisel Butce Takip</h2>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-card-dark text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-card-dark text-slate-600 dark:text-slate-300 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex items-center justify-center p-6 relative overflow-hidden">
+<!-- Decorative Ghosted Icons -->
+<div class="absolute top-20 left-10 opacity-5 dark:opacity-10 pointer-events-none transform -rotate-12">
+<span class="material-symbols-outlined text-9xl">savings</span>
+</div>
+<div class="absolute bottom-20 right-10 opacity-5 dark:opacity-10 pointer-events-none transform rotate-12">
+<span class="material-symbols-outlined text-9xl">payments</span>
+</div>
+<div class="absolute top-1/2 left-1/4 opacity-5 dark:opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-7xl">query_stats</span>
+</div>
+<div class="max-w-md w-full text-center z-10">
+<div class="mb-8">
+<h1 class="text-primary font-display font-bold text-9xl tracking-tighter opacity-20 select-none">404</h1>
+<div class="-mt-16 relative">
+<span class="material-symbols-outlined text-primary text-7xl mb-4 bg-background-light dark:bg-background-dark px-4">search_off</span>
+</div>
+</div>
+<div class="space-y-4">
+<h2 class="text-3xl font-display font-bold text-slate-900 dark:text-white">Sayfa Bulunamadı</h2>
+<p class="text-slate-500 dark:text-slate-400 text-lg">
+                        Aradığınız sayfa mevcut değil veya taşınmış olabilir.
+                    </p>
+</div>
+<div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+<a class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary text-white rounded-xl font-bold transition-all hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20" href="/">
+<span class="material-symbols-outlined">home</span>
+<span>Ana Sayfaya Dön</span>
+</a>
+<button class="inline-flex items-center justify-center gap-2 px-8 py-3 bg-slate-200 dark:bg-card-dark text-slate-700 dark:text-slate-200 rounded-xl font-bold transition-all hover:bg-slate-300 dark:hover:bg-slate-700">
+<span class="material-symbols-outlined">support_agent</span>
+<span>Yardım Al</span>
+</button>
+</div>
+</div>
+</main>
+<footer class="py-8 px-6 text-center border-t border-slate-200 dark:border-slate-800">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto opacity-60">
+<div class="flex flex-col items-center gap-2">
+<div class="size-12 rounded-full bg-slate-100 dark:bg-card-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">pie_chart</span>
+</div>
+<p class="text-xs font-semibold uppercase tracking-wider">Harcama Analizi</p>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-12 rounded-full bg-slate-100 dark:bg-card-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">account_balance</span>
+</div>
+<p class="text-xs font-semibold uppercase tracking-wider">Varlık Yönetimi</p>
+</div>
+<div class="flex flex-col items-center gap-2">
+<div class="size-12 rounded-full bg-slate-100 dark:bg-card-dark flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">trending_up</span>
+</div>
+<p class="text-xs font-semibold uppercase tracking-wider">Yatırım Takibi</p>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
