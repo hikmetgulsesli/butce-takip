@@ -1,3 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,500;6..12,600;6..12,700&family=Sora:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --font-heading: 'Sora', sans-serif;
+  --font-body: 'Nunito Sans', sans-serif;
+  
+  --color-primary: 59 130 246;
+  --color-income: 34 197 94;
+  --color-expense: 239 68 68;
+  --color-surface: 30 41 59;
+  --color-surface-dark: 15 23 42;
+}
+
+@layer base {
+  * {
+    @apply border-slate-200;
+  }
+  
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply font-body antialiased bg-slate-50 text-slate-900;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .dark body {
+    @apply bg-surface-dark text-slate-100;
+  }
+  
+  .dark * {
+    @apply border-slate-700;
+  }
+}
