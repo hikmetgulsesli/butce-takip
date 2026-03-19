@@ -1,0 +1,1695 @@
+[
+  {
+    "screenId": "0bae06ebde8c4b768177b533638acde1",
+    "screenTitle": "0bae06ebde8c4b768177b533638acde1",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "home\nAna Sayfaya Dön",
+        "href": "/",
+        "line": 82
+      },
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 49
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 52
+      },
+      {
+        "type": "button",
+        "label": "support_agent\nYardım Al",
+        "line": 86
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 44
+      },
+      {
+        "type": "button",
+        "label": "[icon: notifications]",
+        "line": 50
+      },
+      {
+        "type": "button",
+        "label": "[icon: settings]",
+        "line": 53
+      },
+      {
+        "type": "button",
+        "label": "[icon: savings]",
+        "line": 60
+      },
+      {
+        "type": "button",
+        "label": "[icon: payments]",
+        "line": 63
+      },
+      {
+        "type": "button",
+        "label": "[icon: query_stats]",
+        "line": 66
+      },
+      {
+        "type": "button",
+        "label": "[icon: search_off]",
+        "line": 72
+      },
+      {
+        "type": "button",
+        "label": "[icon: home]",
+        "line": 83
+      },
+      {
+        "type": "button",
+        "label": "[icon: support_agent]",
+        "line": 87
+      },
+      {
+        "type": "button",
+        "label": "[icon: pie_chart]",
+        "line": 97
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance]",
+        "line": 103
+      },
+      {
+        "type": "button",
+        "label": "[icon: trending_up]",
+        "line": 109
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "home\nAna Sayfaya Dön",
+        "href": "/",
+        "line": 82
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 49
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 52
+      },
+      {
+        "type": "button",
+        "label": "support_agent\nYardım Al",
+        "line": 86
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 44
+      },
+      {
+        "type": "button",
+        "label": "[icon: notifications]",
+        "line": 50
+      },
+      {
+        "type": "button",
+        "label": "[icon: settings]",
+        "line": 53
+      },
+      {
+        "type": "button",
+        "label": "[icon: savings]",
+        "line": 60
+      },
+      {
+        "type": "button",
+        "label": "[icon: payments]",
+        "line": 63
+      },
+      {
+        "type": "button",
+        "label": "[icon: query_stats]",
+        "line": 66
+      },
+      {
+        "type": "button",
+        "label": "[icon: search_off]",
+        "line": 72
+      },
+      {
+        "type": "button",
+        "label": "[icon: home]",
+        "line": 83
+      },
+      {
+        "type": "button",
+        "label": "[icon: support_agent]",
+        "line": 87
+      },
+      {
+        "type": "button",
+        "label": "[icon: pie_chart]",
+        "line": 97
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance]",
+        "line": 103
+      },
+      {
+        "type": "button",
+        "label": "[icon: trending_up]",
+        "line": 109
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 16,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "51c884d7e2614b98925649dceb25be3b",
+    "screenTitle": "İşlem Ekle - Bütçe Takip",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "close",
+        "line": 70
+      },
+      {
+        "type": "button",
+        "label": "İptal",
+        "line": 144
+      },
+      {
+        "type": "button",
+        "label": "check_circle\n                    Kaydet",
+        "line": 148
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 66
+      },
+      {
+        "type": "button",
+        "label": "[icon: close]",
+        "line": 71
+      },
+      {
+        "type": "button",
+        "label": "[icon: trending_down]",
+        "line": 82
+      },
+      {
+        "type": "button",
+        "label": "[icon: trending_up]",
+        "line": 89
+      },
+      {
+        "type": "button",
+        "label": "[icon: expand_more]",
+        "line": 122
+      },
+      {
+        "type": "button",
+        "label": "[icon: calendar_today]",
+        "line": 132
+      },
+      {
+        "type": "button",
+        "label": "[icon: check_circle]",
+        "line": 149
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 80
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 87
+      },
+      {
+        "type": "input",
+        "label": "0,00",
+        "inputType": "text",
+        "placeholder": "0,00",
+        "line": 99
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 111
+      },
+      {
+        "type": "input",
+        "label": "text",
+        "inputType": "text",
+        "line": 130
+      },
+      {
+        "type": "input",
+        "label": "Harcama detaylarını buraya yazabilirsiniz...",
+        "inputType": "textarea",
+        "placeholder": "Harcama detaylarını buraya yazabilirsiniz...",
+        "line": 140
+      },
+      {
+        "type": "form",
+        "label": "form",
+        "line": 74
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "close",
+        "line": 70
+      },
+      {
+        "type": "button",
+        "label": "İptal",
+        "line": 144
+      },
+      {
+        "type": "button",
+        "label": "check_circle\n                    Kaydet",
+        "line": 148
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 66
+      },
+      {
+        "type": "button",
+        "label": "[icon: close]",
+        "line": 71
+      },
+      {
+        "type": "button",
+        "label": "[icon: trending_down]",
+        "line": 82
+      },
+      {
+        "type": "button",
+        "label": "[icon: trending_up]",
+        "line": 89
+      },
+      {
+        "type": "button",
+        "label": "[icon: expand_more]",
+        "line": 122
+      },
+      {
+        "type": "button",
+        "label": "[icon: calendar_today]",
+        "line": 132
+      },
+      {
+        "type": "button",
+        "label": "[icon: check_circle]",
+        "line": 149
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 80
+      },
+      {
+        "type": "input",
+        "label": "radio",
+        "inputType": "radio",
+        "line": 87
+      },
+      {
+        "type": "input",
+        "label": "0,00",
+        "inputType": "text",
+        "placeholder": "0,00",
+        "line": 99
+      },
+      {
+        "type": "input",
+        "label": "select",
+        "inputType": "select",
+        "line": 111
+      },
+      {
+        "type": "input",
+        "label": "text",
+        "inputType": "text",
+        "line": 130
+      },
+      {
+        "type": "input",
+        "label": "Harcama detaylarını buraya yazabilirsiniz...",
+        "inputType": "textarea",
+        "placeholder": "Harcama detaylarını buraya yazabilirsiniz...",
+        "line": 140
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 17,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "6576439802f14f38baea6f2a9e341028",
+    "screenTitle": "Ay Gezgini - Bütçe Takip",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 51
+      },
+      {
+        "type": "button",
+        "label": "person",
+        "line": 54
+      },
+      {
+        "type": "button",
+        "label": "chevron_left\nÖnceki Ay",
+        "line": 73
+      },
+      {
+        "type": "button",
+        "label": "Sonraki Ay\nchevron_right",
+        "line": 83
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 43
+      },
+      {
+        "type": "button",
+        "label": "[icon: settings]",
+        "line": 52
+      },
+      {
+        "type": "button",
+        "label": "[icon: person]",
+        "line": 55
+      },
+      {
+        "type": "button",
+        "label": "[icon: calendar_today]",
+        "line": 67
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_left]",
+        "line": 74
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_right]",
+        "line": 85
+      },
+      {
+        "type": "button",
+        "label": "[icon: trending_up]",
+        "line": 94
+      },
+      {
+        "type": "button",
+        "label": "[icon: trending_down]",
+        "line": 103
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance]",
+        "line": 112
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 51
+      },
+      {
+        "type": "button",
+        "label": "person",
+        "line": 54
+      },
+      {
+        "type": "button",
+        "label": "chevron_left\nÖnceki Ay",
+        "line": 73
+      },
+      {
+        "type": "button",
+        "label": "Sonraki Ay\nchevron_right",
+        "line": 83
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 43
+      },
+      {
+        "type": "button",
+        "label": "[icon: settings]",
+        "line": 52
+      },
+      {
+        "type": "button",
+        "label": "[icon: person]",
+        "line": 55
+      },
+      {
+        "type": "button",
+        "label": "[icon: calendar_today]",
+        "line": 67
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_left]",
+        "line": 74
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_right]",
+        "line": 85
+      },
+      {
+        "type": "button",
+        "label": "[icon: trending_up]",
+        "line": 94
+      },
+      {
+        "type": "button",
+        "label": "[icon: trending_down]",
+        "line": 103
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance]",
+        "line": 112
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 13,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "7af73b4a20734d9895e9ec36228aee56",
+    "screenTitle": "Bütçe Takip Dashboard",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Tümünü Gör\n                        arrow_forward",
+        "href": "#",
+        "line": 250
+      },
+      {
+        "type": "button",
+        "label": "chevron_left",
+        "line": 52
+      },
+      {
+        "type": "button",
+        "label": "chevron_right",
+        "line": 56
+      },
+      {
+        "type": "button",
+        "label": "add\n                        İşlem Ekle",
+        "line": 160
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 46
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_left]",
+        "line": 53
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_right]",
+        "line": 57
+      },
+      {
+        "type": "button",
+        "label": "[icon: trending_up]",
+        "line": 72
+      },
+      {
+        "type": "button",
+        "label": "[icon: arrow_upward]",
+        "line": 77
+      },
+      {
+        "type": "button",
+        "label": "[icon: trending_down]",
+        "line": 86
+      },
+      {
+        "type": "button",
+        "label": "[icon: arrow_downward]",
+        "line": 91
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance]",
+        "line": 100
+      },
+      {
+        "type": "button",
+        "label": "[icon: info]",
+        "line": 105
+      },
+      {
+        "type": "button",
+        "label": "[icon: add]",
+        "line": 161
+      },
+      {
+        "type": "button",
+        "label": "[icon: home]",
+        "line": 182
+      },
+      {
+        "type": "button",
+        "label": "[icon: payments]",
+        "line": 196
+      },
+      {
+        "type": "button",
+        "label": "[icon: shopping_cart]",
+        "line": 210
+      },
+      {
+        "type": "button",
+        "label": "[icon: directions_car]",
+        "line": 224
+      },
+      {
+        "type": "button",
+        "label": "[icon: restaurant]",
+        "line": 238
+      },
+      {
+        "type": "button",
+        "label": "[icon: arrow_forward]",
+        "line": 252
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Tümünü Gör\n                        arrow_forward",
+        "href": "#",
+        "line": 250
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "chevron_left",
+        "line": 52
+      },
+      {
+        "type": "button",
+        "label": "chevron_right",
+        "line": 56
+      },
+      {
+        "type": "button",
+        "label": "add\n                        İşlem Ekle",
+        "line": 160
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 46
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_left]",
+        "line": 53
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_right]",
+        "line": 57
+      },
+      {
+        "type": "button",
+        "label": "[icon: trending_up]",
+        "line": 72
+      },
+      {
+        "type": "button",
+        "label": "[icon: arrow_upward]",
+        "line": 77
+      },
+      {
+        "type": "button",
+        "label": "[icon: trending_down]",
+        "line": 86
+      },
+      {
+        "type": "button",
+        "label": "[icon: arrow_downward]",
+        "line": 91
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance]",
+        "line": 100
+      },
+      {
+        "type": "button",
+        "label": "[icon: info]",
+        "line": 105
+      },
+      {
+        "type": "button",
+        "label": "[icon: add]",
+        "line": 161
+      },
+      {
+        "type": "button",
+        "label": "[icon: home]",
+        "line": 182
+      },
+      {
+        "type": "button",
+        "label": "[icon: payments]",
+        "line": 196
+      },
+      {
+        "type": "button",
+        "label": "[icon: shopping_cart]",
+        "line": 210
+      },
+      {
+        "type": "button",
+        "label": "[icon: directions_car]",
+        "line": 224
+      },
+      {
+        "type": "button",
+        "label": "[icon: restaurant]",
+        "line": 238
+      },
+      {
+        "type": "button",
+        "label": "[icon: arrow_forward]",
+        "line": 252
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 20,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "88b8ebceaff84d6584659153ed7c952f",
+    "screenTitle": "Tüm İşlemler - Bütçe Takip",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "arrow_back",
+        "line": 62
+      },
+      {
+        "type": "button",
+        "label": "search",
+        "line": 75
+      },
+      {
+        "type": "button",
+        "label": "filter_list",
+        "line": 78
+      },
+      {
+        "type": "button",
+        "label": "chevron_left\nÖnceki",
+        "line": 87
+      },
+      {
+        "type": "button",
+        "label": "Sonraki\nchevron_right",
+        "line": 95
+      },
+      {
+        "type": "button",
+        "label": "delete",
+        "line": 119
+      },
+      {
+        "type": "button",
+        "label": "delete",
+        "line": 136
+      },
+      {
+        "type": "button",
+        "label": "delete",
+        "line": 159
+      },
+      {
+        "type": "button",
+        "label": "delete",
+        "line": 182
+      },
+      {
+        "type": "button",
+        "label": "Yeni İşlem Ekle",
+        "line": 196
+      },
+      {
+        "type": "button",
+        "label": "add",
+        "line": 202
+      },
+      {
+        "type": "button",
+        "label": "İptal",
+        "line": 217
+      },
+      {
+        "type": "button",
+        "label": "Sil",
+        "line": 220
+      },
+      {
+        "type": "button",
+        "label": "[icon: arrow_back]",
+        "line": 63
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_right]",
+        "line": 69
+      },
+      {
+        "type": "button",
+        "label": "[icon: search]",
+        "line": 76
+      },
+      {
+        "type": "button",
+        "label": "[icon: filter_list]",
+        "line": 79
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_left]",
+        "line": 88
+      },
+      {
+        "type": "button",
+        "label": "[icon: calendar_month]",
+        "line": 92
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_right]",
+        "line": 97
+      },
+      {
+        "type": "button",
+        "label": "[icon: home]",
+        "line": 109
+      },
+      {
+        "type": "button",
+        "label": "[icon: delete]",
+        "line": 120
+      },
+      {
+        "type": "button",
+        "label": "[icon: shopping_cart]",
+        "line": 126
+      },
+      {
+        "type": "button",
+        "label": "[icon: delete]",
+        "line": 137
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 149
+      },
+      {
+        "type": "button",
+        "label": "[icon: delete]",
+        "line": 160
+      },
+      {
+        "type": "button",
+        "label": "[icon: directions_car]",
+        "line": 172
+      },
+      {
+        "type": "button",
+        "label": "[icon: delete]",
+        "line": 183
+      },
+      {
+        "type": "button",
+        "label": "[icon: history_toggle_off]",
+        "line": 192
+      },
+      {
+        "type": "button",
+        "label": "[icon: add]",
+        "line": 203
+      },
+      {
+        "type": "button",
+        "label": "[icon: warning]",
+        "line": 212
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "arrow_back",
+        "line": 62
+      },
+      {
+        "type": "button",
+        "label": "search",
+        "line": 75
+      },
+      {
+        "type": "button",
+        "label": "filter_list",
+        "line": 78
+      },
+      {
+        "type": "button",
+        "label": "chevron_left\nÖnceki",
+        "line": 87
+      },
+      {
+        "type": "button",
+        "label": "Sonraki\nchevron_right",
+        "line": 95
+      },
+      {
+        "type": "button",
+        "label": "delete",
+        "line": 119
+      },
+      {
+        "type": "button",
+        "label": "delete",
+        "line": 136
+      },
+      {
+        "type": "button",
+        "label": "delete",
+        "line": 159
+      },
+      {
+        "type": "button",
+        "label": "delete",
+        "line": 182
+      },
+      {
+        "type": "button",
+        "label": "Yeni İşlem Ekle",
+        "line": 196
+      },
+      {
+        "type": "button",
+        "label": "add",
+        "line": 202
+      },
+      {
+        "type": "button",
+        "label": "İptal",
+        "line": 217
+      },
+      {
+        "type": "button",
+        "label": "Sil",
+        "line": 220
+      },
+      {
+        "type": "button",
+        "label": "[icon: arrow_back]",
+        "line": 63
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_right]",
+        "line": 69
+      },
+      {
+        "type": "button",
+        "label": "[icon: search]",
+        "line": 76
+      },
+      {
+        "type": "button",
+        "label": "[icon: filter_list]",
+        "line": 79
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_left]",
+        "line": 88
+      },
+      {
+        "type": "button",
+        "label": "[icon: calendar_month]",
+        "line": 92
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_right]",
+        "line": 97
+      },
+      {
+        "type": "button",
+        "label": "[icon: home]",
+        "line": 109
+      },
+      {
+        "type": "button",
+        "label": "[icon: delete]",
+        "line": 120
+      },
+      {
+        "type": "button",
+        "label": "[icon: shopping_cart]",
+        "line": 126
+      },
+      {
+        "type": "button",
+        "label": "[icon: delete]",
+        "line": 137
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 149
+      },
+      {
+        "type": "button",
+        "label": "[icon: delete]",
+        "line": 160
+      },
+      {
+        "type": "button",
+        "label": "[icon: directions_car]",
+        "line": 172
+      },
+      {
+        "type": "button",
+        "label": "[icon: delete]",
+        "line": 183
+      },
+      {
+        "type": "button",
+        "label": "[icon: history_toggle_off]",
+        "line": 192
+      },
+      {
+        "type": "button",
+        "label": "[icon: add]",
+        "line": 203
+      },
+      {
+        "type": "button",
+        "label": "[icon: warning]",
+        "line": 212
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 31,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "b09b1e6df1d44a70a5329a05995cfeb4",
+    "screenTitle": "Hata - Kişisel Bütçe Takip",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "close",
+        "line": 49
+      },
+      {
+        "type": "button",
+        "label": "refresh\nTekrar Dene",
+        "line": 65
+      },
+      {
+        "type": "button",
+        "label": "Ana Sayfaya Dön",
+        "line": 69
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 45
+      },
+      {
+        "type": "button",
+        "label": "[icon: close]",
+        "line": 50
+      },
+      {
+        "type": "button",
+        "label": "[icon: error]",
+        "line": 56
+      },
+      {
+        "type": "button",
+        "label": "[icon: refresh]",
+        "line": 66
+      },
+      {
+        "type": "button",
+        "label": "[icon: support_agent]",
+        "line": 78
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "close",
+        "line": 49
+      },
+      {
+        "type": "button",
+        "label": "refresh\nTekrar Dene",
+        "line": 65
+      },
+      {
+        "type": "button",
+        "label": "Ana Sayfaya Dön",
+        "line": 69
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 45
+      },
+      {
+        "type": "button",
+        "label": "[icon: close]",
+        "line": 50
+      },
+      {
+        "type": "button",
+        "label": "[icon: error]",
+        "line": 56
+      },
+      {
+        "type": "button",
+        "label": "[icon: refresh]",
+        "line": 66
+      },
+      {
+        "type": "button",
+        "label": "[icon: support_agent]",
+        "line": 78
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 8,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "b147340881a148d782d3285dae012b55",
+    "screenTitle": "Gider Analizi - Bütçe Takip",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "arrow_back\nGeri",
+        "line": 55
+      },
+      {
+        "type": "button",
+        "label": "more_horiz",
+        "line": 60
+      },
+      {
+        "type": "button",
+        "label": "chevron_left",
+        "line": 67
+      },
+      {
+        "type": "button",
+        "label": "chevron_right",
+        "line": 74
+      },
+      {
+        "type": "button",
+        "label": "home\nAna Sayfa",
+        "line": 208
+      },
+      {
+        "type": "button",
+        "label": "pie_chart\nAnaliz",
+        "line": 212
+      },
+      {
+        "type": "button",
+        "label": "add",
+        "line": 217
+      },
+      {
+        "type": "button",
+        "label": "account_balance_wallet\nCüzdan",
+        "line": 221
+      },
+      {
+        "type": "button",
+        "label": "settings\nAyarlar",
+        "line": 225
+      },
+      {
+        "type": "button",
+        "label": "[icon: arrow_back]",
+        "line": 56
+      },
+      {
+        "type": "button",
+        "label": "[icon: more_horiz]",
+        "line": 61
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_left]",
+        "line": 68
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_right]",
+        "line": 75
+      },
+      {
+        "type": "button",
+        "label": "[icon: restaurant]",
+        "line": 112
+      },
+      {
+        "type": "button",
+        "label": "[icon: directions_car]",
+        "line": 128
+      },
+      {
+        "type": "button",
+        "label": "[icon: receipt_long]",
+        "line": 144
+      },
+      {
+        "type": "button",
+        "label": "[icon: celebration]",
+        "line": 160
+      },
+      {
+        "type": "button",
+        "label": "[icon: medical_services]",
+        "line": 176
+      },
+      {
+        "type": "button",
+        "label": "[icon: category]",
+        "line": 192
+      },
+      {
+        "type": "button",
+        "label": "[icon: home]",
+        "line": 209
+      },
+      {
+        "type": "button",
+        "label": "[icon: pie_chart]",
+        "line": 213
+      },
+      {
+        "type": "button",
+        "label": "[icon: add]",
+        "line": 218
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 222
+      },
+      {
+        "type": "button",
+        "label": "[icon: settings]",
+        "line": 226
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "arrow_back\nGeri",
+        "line": 55
+      },
+      {
+        "type": "button",
+        "label": "more_horiz",
+        "line": 60
+      },
+      {
+        "type": "button",
+        "label": "chevron_left",
+        "line": 67
+      },
+      {
+        "type": "button",
+        "label": "chevron_right",
+        "line": 74
+      },
+      {
+        "type": "button",
+        "label": "home\nAna Sayfa",
+        "line": 208
+      },
+      {
+        "type": "button",
+        "label": "pie_chart\nAnaliz",
+        "line": 212
+      },
+      {
+        "type": "button",
+        "label": "add",
+        "line": 217
+      },
+      {
+        "type": "button",
+        "label": "account_balance_wallet\nCüzdan",
+        "line": 221
+      },
+      {
+        "type": "button",
+        "label": "settings\nAyarlar",
+        "line": 225
+      },
+      {
+        "type": "button",
+        "label": "[icon: arrow_back]",
+        "line": 56
+      },
+      {
+        "type": "button",
+        "label": "[icon: more_horiz]",
+        "line": 61
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_left]",
+        "line": 68
+      },
+      {
+        "type": "button",
+        "label": "[icon: chevron_right]",
+        "line": 75
+      },
+      {
+        "type": "button",
+        "label": "[icon: restaurant]",
+        "line": 112
+      },
+      {
+        "type": "button",
+        "label": "[icon: directions_car]",
+        "line": 128
+      },
+      {
+        "type": "button",
+        "label": "[icon: receipt_long]",
+        "line": 144
+      },
+      {
+        "type": "button",
+        "label": "[icon: celebration]",
+        "line": 160
+      },
+      {
+        "type": "button",
+        "label": "[icon: medical_services]",
+        "line": 176
+      },
+      {
+        "type": "button",
+        "label": "[icon: category]",
+        "line": 192
+      },
+      {
+        "type": "button",
+        "label": "[icon: home]",
+        "line": 209
+      },
+      {
+        "type": "button",
+        "label": "[icon: pie_chart]",
+        "line": 213
+      },
+      {
+        "type": "button",
+        "label": "[icon: add]",
+        "line": 218
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 222
+      },
+      {
+        "type": "button",
+        "label": "[icon: settings]",
+        "line": 226
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 24,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "cedbfe03dd8e48499953b70b85457642",
+    "screenTitle": "cedbfe03dd8e48499953b70b85457642",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 45
+      },
+      {
+        "type": "button",
+        "label": "İptal",
+        "line": 110
+      },
+      {
+        "type": "button",
+        "label": "delete\nSil",
+        "line": 113
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 119
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 40
+      },
+      {
+        "type": "button",
+        "label": "[icon: notifications]",
+        "line": 46
+      },
+      {
+        "type": "button",
+        "label": "[icon: shopping_cart]",
+        "line": 78
+      },
+      {
+        "type": "button",
+        "label": "[icon: warning]",
+        "line": 98
+      },
+      {
+        "type": "button",
+        "label": "[icon: delete]",
+        "line": 114
+      },
+      {
+        "type": "button",
+        "label": "[icon: close]",
+        "line": 120
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 45
+      },
+      {
+        "type": "button",
+        "label": "İptal",
+        "line": 110
+      },
+      {
+        "type": "button",
+        "label": "delete\nSil",
+        "line": 113
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 119
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 40
+      },
+      {
+        "type": "button",
+        "label": "[icon: notifications]",
+        "line": 46
+      },
+      {
+        "type": "button",
+        "label": "[icon: shopping_cart]",
+        "line": 78
+      },
+      {
+        "type": "button",
+        "label": "[icon: warning]",
+        "line": 98
+      },
+      {
+        "type": "button",
+        "label": "[icon: delete]",
+        "line": 114
+      },
+      {
+        "type": "button",
+        "label": "[icon: close]",
+        "line": 120
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 10,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "f31f097b14474601ab5c54c6b3879d73",
+    "screenTitle": "f31f097b14474601ab5c54c6b3879d73",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 58
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 61
+      },
+      {
+        "type": "button",
+        "label": "add_circle\nİlk İşlemi Ekle",
+        "line": 93
+      },
+      {
+        "type": "button",
+        "label": "file_upload\n                                Veri Aktar",
+        "line": 98
+      },
+      {
+        "type": "button",
+        "label": "help\n                                Nasıl Çalışır?",
+        "line": 103
+      },
+      {
+        "type": "button",
+        "label": "add",
+        "line": 116
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 53
+      },
+      {
+        "type": "button",
+        "label": "[icon: notifications]",
+        "line": 59
+      },
+      {
+        "type": "button",
+        "label": "[icon: settings]",
+        "line": 62
+      },
+      {
+        "type": "button",
+        "label": "[icon: wallet]",
+        "line": 74
+      },
+      {
+        "type": "button",
+        "label": "[icon: add]",
+        "line": 77
+      },
+      {
+        "type": "button",
+        "label": "[icon: add_circle]",
+        "line": 94
+      },
+      {
+        "type": "button",
+        "label": "[icon: file_upload]",
+        "line": 99
+      },
+      {
+        "type": "button",
+        "label": "[icon: help]",
+        "line": 104
+      },
+      {
+        "type": "button",
+        "label": "[icon: add]",
+        "line": 117
+      }
+    ],
+    "navigation": [],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "notifications",
+        "line": 58
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 61
+      },
+      {
+        "type": "button",
+        "label": "add_circle\nİlk İşlemi Ekle",
+        "line": 93
+      },
+      {
+        "type": "button",
+        "label": "file_upload\n                                Veri Aktar",
+        "line": 98
+      },
+      {
+        "type": "button",
+        "label": "help\n                                Nasıl Çalışır?",
+        "line": 103
+      },
+      {
+        "type": "button",
+        "label": "add",
+        "line": 116
+      },
+      {
+        "type": "button",
+        "label": "[icon: account_balance_wallet]",
+        "line": 53
+      },
+      {
+        "type": "button",
+        "label": "[icon: notifications]",
+        "line": 59
+      },
+      {
+        "type": "button",
+        "label": "[icon: settings]",
+        "line": 62
+      },
+      {
+        "type": "button",
+        "label": "[icon: wallet]",
+        "line": 74
+      },
+      {
+        "type": "button",
+        "label": "[icon: add]",
+        "line": 77
+      },
+      {
+        "type": "button",
+        "label": "[icon: add_circle]",
+        "line": 94
+      },
+      {
+        "type": "button",
+        "label": "[icon: file_upload]",
+        "line": 99
+      },
+      {
+        "type": "button",
+        "label": "[icon: help]",
+        "line": 104
+      },
+      {
+        "type": "button",
+        "label": "[icon: add]",
+        "line": 117
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 15,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
