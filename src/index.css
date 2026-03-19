@@ -4,15 +4,36 @@
 @tailwind components;
 @tailwind utilities;
 
+/* US-002: Design Tokens - CSS Custom Properties */
 :root {
+  /* Typography */
   --font-heading: 'Sora', sans-serif;
   --font-body: 'Nunito Sans', sans-serif;
   
+  /* US-002: Design Tokens - Color System */
+  /* Primary accent - blue-500 */
   --color-primary: 59 130 246;
+  --color-primary-light: 96 165 250;
+  --color-primary-dark: 37 99 235;
+  
+  /* US-002: Design Tokens - Income - green-500 */
   --color-income: 34 197 94;
+  --color-income-light: 74 222 128;
+  --color-income-dark: 22 163 74;
+  
+  /* US-002: Design Tokens - Expense - red-500 */
   --color-expense: 239 68 68;
-  --color-surface: 30 41 59;
-  --color-surface-dark: 15 23 42;
+  --color-expense-light: 248 113 113;
+  --color-expense-dark: 220 38 38;
+  
+  /* US-002: Design Tokens - Dark theme backgrounds */
+  --color-surface: 30 41 59;        /* slate-800 */
+  --color-surface-dark: 15 23 42;   /* slate-900 */
+  
+  /* US-002: Design Tokens - Text colors */
+  --color-text-primary: 15 23 42;   /* slate-900 */
+  --color-text-secondary: 100 116 139; /* slate-500 */
+  --color-text-light: 241 245 249;  /* slate-100 */
 }
 
 @layer base {
@@ -34,11 +55,38 @@
 }
 
 @layer utilities {
+  /* US-002: Dark mode overrides with proper design tokens */
   .dark body {
     @apply bg-surface-dark text-slate-100;
   }
   
   .dark * {
     @apply border-slate-700;
+  }
+  
+  /* US-002: Income/Expense color utilities */
+  .text-income {
+    color: rgb(var(--color-income));
+  }
+  
+  .text-expense {
+    color: rgb(var(--color-expense));
+  }
+  
+  .bg-income {
+    background-color: rgb(var(--color-income));
+  }
+  
+  .bg-expense {
+    background-color: rgb(var(--color-expense));
+  }
+  
+  /* US-002: Surface colors for dark theme */
+  .bg-surface {
+    background-color: rgb(var(--color-surface));
+  }
+  
+  .bg-surface-dark {
+    background-color: rgb(var(--color-surface-dark));
   }
 }
