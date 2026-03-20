@@ -1,9 +1,10 @@
 /**
- * Error Page (404/Error Routes)
+ * Generic Error Page component
  * US-011: Full Transaction List View & Error Pages
- * 
- * Displays 'Sayfa Bulunamadi' message with 'Ana Sayfaya Don' link.
- * Implements screen: b09b1e6df1d44a70a5329a05995cfeb4 (Hata Sayfasi)
+ *
+ * By default shows a generic (500-style) error code, title ("Bir hata oluştu"),
+ * and message for unexpected errors, with a primary "Ana Sayfaya Dön" link.
+ * 404-specific copy ("Sayfa Bulunamadı") is provided by the NotFoundPage below.
  */
 
 import { Link, useNavigate } from 'react-router-dom'

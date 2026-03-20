@@ -61,7 +61,11 @@ export function IslemListesiPage() {
   const groupedTransactions = useMemo(() => {
     const groups: Record<string, Transaction[]> = {}
     filteredTransactions.forEach(t => {
-      const dateKey = new Date(t.date).toISOString().split('T')[0]
+      const date = new Date(t.date)
+      const year = date.getFullYear()
+      const month = String(date.getMonth() + 1).padStart(2, '0')
+      const day = String(date.getDate()).padStart(2, '0')
+      const dateKey = `${year}-${month}-${day}`
       if (!groups[dateKey]) groups[dateKey] = []
       groups[dateKey].push(t)
     })
@@ -100,8 +104,11 @@ export function IslemListesiPage() {
   }
 
   const formatDateTR = (dateStr: string) => {
-    const date = new Date(dateStr)
-    return `${date.getDate()} ${MONTHS_TR[date.getMonth()]} ${date.getFullYear()}`
+    const [yearStr, monthStr, dayStr] = dateStr.split('-')
+    const year = Number(yearStr)
+    const month = Number(monthStr)
+    const day = Number(dayStr)
+    return `${day} ${MONTHS_TR[month - 1]} ${year}`
   }
 
   const monthName = `${MONTHS_TR[currentMonth]} ${currentYear}`
@@ -127,7 +134,7 @@ export function IslemListesiPage() {
             <button 
               className="p-2 rounded-lg bg-slate-100 dark:bg-surface text-slate-600 dark:text-slate-300 hover:text-primary transition-colors cursor-pointer"
               aria-label="Ara"
-              onClick={() => {}}
+              onClick={() => setSearchTerm(searchTerm => searchTerm ? '' : searchTerm)}
             >
               <Search className="w-5 h-5" />
             </button>
