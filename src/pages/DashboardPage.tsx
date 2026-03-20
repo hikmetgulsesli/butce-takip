@@ -37,29 +37,24 @@ export function DashboardPage() {
 
   const monthTransactions = useMemo(() => {
     return getTransactionsByMonth(currentYear, currentMonth)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getTransactionsByMonth, currentYear, currentMonth])
 
   const recentTransactions = useMemo(() => {
     return [...monthTransactions].sort((a, b) =>
       new Date(b.date).getTime() - new Date(a.date).getTime()
     ).slice(0, 5)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [monthTransactions])
 
   const incomeTotal = useMemo(() => {
     return getIncomeTotal(currentYear, currentMonth)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getIncomeTotal, currentYear, currentMonth])
 
   const expenseTotal = useMemo(() => {
     return getExpenseTotal(currentYear, currentMonth)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getExpenseTotal, currentYear, currentMonth])
 
   const balance = useMemo(() => {
     return getBalance(currentYear, currentMonth)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [getBalance, currentYear, currentMonth])
 
   const handlePreviousMonth = useCallback(() => {
@@ -101,11 +96,6 @@ export function DashboardPage() {
             </h1>
           </div>
           <div className="flex items-center gap-4">
-            <MonthNavigator
-              currentDate={currentDate}
-              onPreviousMonth={handlePreviousMonth}
-              onNextMonth={handleNextMonth}
-            />
             <button
               className="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-surface text-slate-600 dark:text-slate-300 hover:bg-primary/10 hover:text-primary transition-colors cursor-pointer"
               aria-label="Bildirimler"
@@ -131,7 +121,7 @@ export function DashboardPage() {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* Left Column: Transaction Form */}
           <div className="lg:col-span-1">
             {showAddForm ? (
@@ -166,9 +156,16 @@ export function DashboardPage() {
           </div>
         </div>
 
-        {/* Bottom Section: Category Pie Chart */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Bottom Section: Category Pie Chart with MonthNavigator */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="lg:col-span-1">
+            <div className="mb-4">
+              <MonthNavigator
+                currentDate={currentDate}
+                onPreviousMonth={handlePreviousMonth}
+                onNextMonth={handleNextMonth}
+              />
+            </div>
             <CategoryPieChart transactions={monthTransactions} />
           </div>
           <div className="lg:col-span-2">

@@ -27,12 +27,13 @@ export function TransactionList({ transactions }: TransactionListProps) {
     }).format(amount)
   }
 
-  const formatDate = (date: Date) => {
+  const formatDate = (date: Date | string) => {
+    const parsedDate = date instanceof Date ? date : new Date(date)
     return new Intl.DateTimeFormat('tr-TR', {
       day: 'numeric',
       month: 'long',
       year: 'numeric'
-    }).format(date)
+    }).format(parsedDate)
   }
 
   const getCategoryIcon = (categoryId: string) => {

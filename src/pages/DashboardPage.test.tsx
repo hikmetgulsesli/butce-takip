@@ -30,8 +30,8 @@ Object.defineProperty(window, 'matchMedia', {
 
 describe('DashboardPage', () => {
   beforeEach(() => {
-    localStorageMock.getItem.mockReturnValue('[]')
     vi.clearAllMocks()
+    localStorageMock.getItem.mockReturnValue('[]')
   })
 
   it('renders SummaryCard with current month totals', () => {
