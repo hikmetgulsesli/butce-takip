@@ -1,103 +1,72 @@
 import { TrendingUp, TrendingDown, Wallet } from 'lucide-react'
-import { formatCurrency } from '../utils'
 
 interface SummaryCardProps {
   totalIncome: number
   totalExpense: number
+  balance: number
 }
 
-/**
- * SummaryCard component showing monthly totals
- * - Toplam Gelir (Total Income)
- * - Toplam Gider (Total Expense)
- * - Bakiye (Balance = Income - Expense)
- */
-export function SummaryCard({ totalIncome, totalExpense }: SummaryCardProps) {
-  const balance = totalIncome - totalExpense
-  const isPositive = balance >= 0
-
-  const cards = [
-    {
-      id: 'income',
-      label: 'Toplam Gelir',
-      value: totalIncome,
-      icon: TrendingUp,
-      colorClass: 'text-income',
-      bgClass: 'bg-income/10',
-      borderClass: 'border-income/20',
-    },
-    {
-      id: 'expense',
-      label: 'Toplam Gider',
-      value: totalExpense,
-      icon: TrendingDown,
-      colorClass: 'text-expense',
-      bgClass: 'bg-expense/10',
-      borderClass: 'border-expense/20',
-    },
-    {
-      id: 'balance',
-      label: 'Bakiye',
-      value: balance,
-      icon: Wallet,
-      colorClass: isPositive ? 'text-income' : 'text-expense',
-      bgClass: isPositive ? 'bg-income/10' : 'bg-expense/10',
-      borderClass: isPositive ? 'border-income/20' : 'border-expense/20',
-    },
-  ]
+export function SummaryCard({ totalIncome, totalExpense, balance }: SummaryCardProps) {
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat('tr-TR', {
+      style: 'currency',
+      currency: 'TRY',
+      minimumFractionDigits: 2
+    }).format(amount)
+  }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
-      {cards.map((card) => {
-        const IconComponent = card.icon
-        return (
-          <div
-            key={card.id}
-            data-testid={`summary-card-${card.id}`}
-            className={`
-              relative overflow-hidden rounded-2xl border p-6
-              bg-white dark:bg-card-dark
-              border-slate-200 dark:border-slate-700
-              hover:scale-[1.02] transition-transform duration-200
-              ${card.borderClass}
-            `}
-          >
-            {/* Icon background decoration */}
-            <div
-              className={`
-                absolute -right-4 -top-4 size-24 rounded-full opacity-20
-                ${card.bgClass}
-              `}
-            />
-
-            <div className="relative flex items-start justify-between">
-              <div className="space-y-2">
-                <p className="text-sm font-medium text-slate-500 dark:text-slate-400">
-                  {card.label}
-                </p>
-                <p
-                  data-testid={`summary-card-${card.id}-value`}
-                  className={`
-                    text-2xl font-bold tracking-tight
-                    ${card.colorClass}
-                  `}
-                >
-                  {formatCurrency(card.value)}
-                </p>
-              </div>
-
-              <div
-                className={`
-                  flex items-center justify-center size-12 rounded-xl
-                  ${card.bgClass} ${card.colorClass}
-                `}
-              >
-                <IconComponent className="size-6" />
-              </div>
-            </div>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* Income Card */}
+      <div className="bg-white dark:bg-surface p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+        <div className="flex items-center justify-between mb-4">
+          <span className="text-slate-500 dark:text-slate-400 font-medium font-body">Toplam Gelir</span>
+          <div className="bg-income/10 p-2 rounded-lg">
+            <TrendingUp className="w-5 h-5 text-income" />
           </div>
-        )
-      })}
+        </div>
+        <div className="text-3xl font-bold text-income font-heading">
+          {formatCurrency(totalIncome)}
+        </div>
+        <div className="mt-2 text-sm text-income flex items-center gap-1">
+          <span className="text-xs">↑</span>
+          <span>Aylık gelir</span>
+        </div>
+      </div>
+
+      {/* Expense Card */}
+      <div className="bg-white dark:bg-surface p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+        <div className="flex items-center justify-between mb-4">
+          <span className="text-slate-500 dark:text-slate-400 font-medium font-body">Toplam Gider</span>
+          <div className="bg-expense/10 p-2 rounded-lg">
+            <TrendingDown className="w-5 h-5 text-expense" />
+          </div>
+        </div>
+        <div className="text-3xl font-bold text-expense font-heading">
+          {formatCurrency(totalExpense)}
+        </div>
+        <div className="mt-2 text-sm text-expense flex items-center gap-1">
+          <span className="text-xs">↓</span>
+          <span>Aylık gider</span>
+        </div>
+      </div>
+
+      {/* Balance Card */}
+      <div className="bg-white dark:bg-surface p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+        <div className="flex items-center justify-between mb-4">
+          <span className="text-slate-500 dark:text-slate-400 font-medium font-body">Bakiye</span>
+          <div className="bg-primary/10 p-2 rounded-lg">
+            <Wallet className="w-5 h-5 text-primary" />
+          </div>
+        </div>
+        <div className={`text-3xl font-bold font-heading ${balance >= 0 ? 'text-primary' : 'text-expense'}`}>
+          {formatCurrency(balance)}
+        </div>
+        <div className={`mt-2 text-sm flex items-center gap-1 ${balance >= 0 ? 'text-primary' : 'text-expense'}`}>
+          <span className="text-xs">ℹ</span>
+          <span>{balance >= 0 ? 'Pozitif bakiye' : 'Negatif bakiye'}</span>
+        </div>
+      </div>
     </div>
   )
 }

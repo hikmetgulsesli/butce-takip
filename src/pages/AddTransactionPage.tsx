@@ -6,23 +6,24 @@
  * Shows the transaction form in a full page context
  */
 
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { TransactionForm } from '../components/TransactionForm'
+import { useTransactions } from '../hooks'
 import type { Transaction } from '../types'
 
 export function AddTransactionPage() {
   const navigate = useNavigate()
-  const [transactions, setTransactions] = useState<Omit<Transaction, 'id'>[]>([])
+  const { addTransaction, getTransactionsByMonth } = useTransactions()
+
+  const currentDate = new Date()
+  const currentYear = currentDate.getFullYear()
+  const currentMonthNumber = currentDate.getMonth()
+  const monthTransactions = getTransactionsByMonth(currentYear, currentMonthNumber)
+
+  const currentMonthLabel = currentDate.toLocaleDateString('tr-TR', { month: 'long', year: 'numeric' })
 
   const handleSubmit = (data: Omit<Transaction, 'id'>) => {
-    // Add transaction to local state
-    setTransactions(prev => [...prev, data])
-    
-    // Show success feedback (in a real app, this would be a toast)
-    console.log('Transaction saved:', data)
-    
-    // Navigate back to dashboard
+    addTransaction(data)
     navigate('/')
   }
 
@@ -30,18 +31,16 @@ export function AddTransactionPage() {
     navigate('/')
   }
 
-  // Calculate summary from transactions
-  const totalIncome = transactions
+  // Calculate summary from current month transactions
+  const totalIncome = monthTransactions
     .filter(t => t.type === 'income')
     .reduce((sum, t) => sum + t.amount, 0)
   
-  const totalExpense = transactions
+  const totalExpense = monthTransactions
     .filter(t => t.type === 'expense')
     .reduce((sum, t) => sum + t.amount, 0)
   
   const balance = totalIncome - totalExpense
-
-  const currentMonth = new Date().toLocaleDateString('tr-TR', { month: 'long', year: 'numeric' })
 
   return (
     <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden bg-slate-50 dark:bg-slate-900">
@@ -92,7 +91,7 @@ export function AddTransactionPage() {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
               </svg>
-              <span>{currentMonth}</span>
+              <span>{currentMonthLabel}</span>
             </div>
           </div>
 
@@ -108,7 +107,7 @@ export function AddTransactionPage() {
               <div className="flex flex-col items-center text-center px-4">
                 <span className="font-body text-xs font-bold text-primary uppercase tracking-[0.2em] mb-1">Seçili Dönem</span>
                 <h2 className="font-heading text-2xl md:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-3">
-                  {currentMonth}
+                  {currentMonthLabel}
                 </h2>
               </div>
               <button className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-primary/50 hover:text-primary transition-all duration-200 cursor-pointer group">
@@ -172,14 +171,14 @@ export function AddTransactionPage() {
         </div>
 
         {/* Recent Transactions Summary */}
-        {transactions.length > 0 && (
+        {monthTransactions.length > 0 && (
           <div className="w-full max-w-4xl mt-8">
             <div className="bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 p-8">
               <h3 className="font-heading text-xl font-bold text-slate-900 dark:text-white mb-6">
-                Son Eklenen İşlemler ({transactions.length})
+                Son Eklenen İşlemler ({monthTransactions.length})
               </h3>
               <div className="space-y-3">
-                {transactions.slice(-5).map((t, index) => (
+                {monthTransactions.slice(-5).reverse().map((t, index) => (
                   <div key={index} className="flex items-center justify-between p-4 rounded-xl bg-slate-50 dark:bg-slate-900/50">
                     <div className="flex items-center gap-3">
                       <div className={`w-2 h-2 rounded-full ${t.type === 'income' ? 'bg-income' : 'bg-expense'}`} />
