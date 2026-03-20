@@ -1,4 +1,7 @@
 import { ReactNode } from 'react'
+export { CategoryPieChart } from './CategoryPieChart'
+export { TransactionList } from './TransactionList'
+export { MonthNavigator } from './MonthNavigator'
 
 interface CardProps {
   children: ReactNode
@@ -12,6 +15,9 @@ export function Card({ children, className = '' }: CardProps) {
     </div>
   )
 }
+
+// Re-export SummaryCard for unified component imports
+export { SummaryCard } from './SummaryCard'
 
 interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'danger'
