@@ -29,15 +29,9 @@ describe('CategoryPieChart', () => {
       createMockTransaction('1', 'expense', 'yemek', 500, new Date(2024, 0, 15))
     ]
     
-    render(
-      <CategoryPieChart 
-        transactions={transactions} 
-        selectedMonth={0} 
-        selectedYear={2024} 
-      />
-    )
+    render(<CategoryPieChart transactions={transactions} />)
     
-    // Chart should render (responsive container)
+    // Chart should Render (responsive container)
     const chartContainer = document.querySelector('.recharts-responsive-container')
     expect(chartContainer).toBeInTheDocument()
   })
@@ -49,13 +43,7 @@ describe('CategoryPieChart', () => {
       createMockTransaction('3', 'expense', 'fatura', 2000, new Date(2024, 0, 5))
     ]
     
-    render(
-      <CategoryPieChart 
-        transactions={transactions} 
-        selectedMonth={0} 
-        selectedYear={2024} 
-      />
-    )
+    render(<CategoryPieChart transactions={transactions} />)
     
     // Should have pie slices for each category - at least 2 for valid percentages
     const pieSlices = document.querySelectorAll('.recharts-pie-sector')
@@ -68,45 +56,19 @@ describe('CategoryPieChart', () => {
       createMockTransaction('2', 'expense', 'ulasim', 500, new Date(2024, 0, 10))
     ]
     
-    render(
-      <CategoryPieChart 
-        transactions={transactions} 
-        selectedMonth={0} 
-        selectedYear={2024} 
-      />
-    )
+    render(<CategoryPieChart transactions={transactions} />)
     
-    // Legend should show category names with percentages
+    // Legend should show category names
     expect(screen.getByText(/Yemek/)).toBeInTheDocument()
     expect(screen.getByText(/Ulaşım/)).toBeInTheDocument()
   })
 
-  it('empty state shows Bu ay gider yok message', () => {
+  it('empty state shows Henüz gider kaydı yok message', () => {
     const transactions: Transaction[] = []
     
-    render(
-      <CategoryPieChart 
-        transactions={transactions} 
-        selectedMonth={0} 
-        selectedYear={2024} 
-      />
-    )
+    render(<CategoryPieChart transactions={transactions} />)
     
-    expect(screen.getByText('Bu ay gider yok')).toBeInTheDocument()
-  })
-
-  it('empty state shows description', () => {
-    const transactions: Transaction[] = []
-    
-    render(
-      <CategoryPieChart 
-        transactions={transactions} 
-        selectedMonth={0} 
-        selectedYear={2024} 
-      />
-    )
-    
-    expect(screen.getByText(/Bu ay için henüz gider kaydı bulunmamaktadır/)).toBeInTheDocument()
+    expect(screen.getByText('Henüz gider kaydı yok')).toBeInTheDocument()
   })
 
   it('does not show empty state when there are expenses', () => {
@@ -114,75 +76,9 @@ describe('CategoryPieChart', () => {
       createMockTransaction('1', 'expense', 'yemek', 500, new Date(2024, 0, 15))
     ]
     
-    render(
-      <CategoryPieChart 
-        transactions={transactions} 
-        selectedMonth={0} 
-        selectedYear={2024} 
-      />
-    )
+    render(<CategoryPieChart transactions={transactions} />)
     
-    expect(screen.queryByText('Bu ay gider yok')).not.toBeInTheDocument()
-  })
-
-  it('filters by selected month', () => {
-    const transactions: Transaction[] = [
-      createMockTransaction('1', 'expense', 'yemek', 500, new Date(2024, 0, 15)), // January
-      createMockTransaction('2', 'expense', 'ulasim', 300, new Date(2024, 1, 10)) // February
-    ]
-    
-    const { rerender } = render(
-      <CategoryPieChart 
-        transactions={transactions} 
-        selectedMonth={0} 
-        selectedYear={2024} 
-      />
-    )
-    
-    // Should show Yemek (January expense)
-    expect(screen.getByText(/Yemek/)).toBeInTheDocument()
-    
-    // Switch to February
-    rerender(
-      <CategoryPieChart 
-        transactions={transactions} 
-        selectedMonth={1} 
-        selectedYear={2024} 
-      />
-    )
-    
-    // Should now show Ulaşım (February expense)
-    expect(screen.getByText(/Ulaşım/)).toBeInTheDocument()
-  })
-
-  it('filters by selected year', () => {
-    const transactions: Transaction[] = [
-      createMockTransaction('1', 'expense', 'yemek', 500, new Date(2024, 0, 15)),
-      createMockTransaction('2', 'expense', 'ulasim', 300, new Date(2023, 0, 15))
-    ]
-    
-    const { rerender } = render(
-      <CategoryPieChart 
-        transactions={transactions} 
-        selectedMonth={0} 
-        selectedYear={2024} 
-      />
-    )
-    
-    // Should show Yemek (2024 expense)
-    expect(screen.getByText(/Yemek/)).toBeInTheDocument()
-    
-    // Switch to 2023
-    rerender(
-      <CategoryPieChart 
-        transactions={transactions} 
-        selectedMonth={0} 
-        selectedYear={2023} 
-      />
-    )
-    
-    // Should now show Ulaşım (2023 expense)
-    expect(screen.getByText(/Ulaşım/)).toBeInTheDocument()
+    expect(screen.queryByText('Henüz gider kaydı yok')).not.toBeInTheDocument()
   })
 
   it('ignores income transactions', () => {
@@ -191,13 +87,7 @@ describe('CategoryPieChart', () => {
       createMockTransaction('2', 'income', 'maas', 5000, new Date(2024, 0, 10))
     ]
     
-    render(
-      <CategoryPieChart 
-        transactions={transactions} 
-        selectedMonth={0} 
-        selectedYear={2024} 
-      />
-    )
+    render(<CategoryPieChart transactions={transactions} />)
     
     // Should show Yemek (expense)
     expect(screen.getByText(/Yemek/)).toBeInTheDocument()
@@ -214,16 +104,9 @@ describe('CategoryPieChart', () => {
       createMockTransaction('3', 'expense', 'ulasim', 5000, new Date(2024, 0, 5))
     ]
     
-    render(
-      <CategoryPieChart 
-        transactions={transactions} 
-        selectedMonth={0} 
-        selectedYear={2024} 
-      />
-    )
+    render(<CategoryPieChart transactions={transactions} />)
     
     // Legend should show both categories (Yemek and Ulaşım)
-    // Confirming that expenses were aggregated properly
     expect(screen.getByText(/Yemek/)).toBeInTheDocument()
     expect(screen.getByText(/Ulaşım/)).toBeInTheDocument()
   })
