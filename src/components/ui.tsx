@@ -1,7 +1,7 @@
 import { ReactNode } from 'react'
 export { CategoryPieChart } from './CategoryPieChart'
-
 export { TransactionList } from './TransactionList'
+export { MonthNavigator } from './MonthNavigator'
 
 interface CardProps {
   children: ReactNode
