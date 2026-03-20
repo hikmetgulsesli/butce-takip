@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+export { CategoryPieChart } from './CategoryPieChart'
 
 export { TransactionList } from './TransactionList'
 
