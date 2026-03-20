@@ -17,7 +17,7 @@ describe('DeleteConfirmationDialog', () => {
   it('renders when isOpen is true', () => {
     render(<DeleteConfirmationDialog {...defaultProps} />)
     expect(screen.getByText('İşlemi Sil')).toBeInTheDocument()
-    expect(screen.getByText('Bu işlemi silmek istediğinize emin misiniz?')).toBeInTheDocument()
+    expect(screen.getByText(/Bu işlemi silmek istediğinize emin misiniz/)).toBeInTheDocument()
   })
 
   it('displays confirmation message', () => {

@@ -16,11 +16,16 @@ export default [
         ecmaFeatures: { jsx: true },
       },
       globals: {
+        React: 'readonly',
+        JSX: 'readonly',
         document: 'readonly',
         console: 'readonly',
         window: 'readonly',
         navigator: 'readonly',
         Storage: 'readonly',
+        HTMLElement: 'readonly',
+        HTMLDivElement: 'readonly',
+        MouseEvent: 'readonly',
       },
     },
     plugins: {

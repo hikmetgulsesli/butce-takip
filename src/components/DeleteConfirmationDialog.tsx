@@ -1,3 +1,4 @@
+import React from 'react'
 import { Trash2, X, AlertTriangle } from 'lucide-react'
 
 interface DeleteConfirmationDialogProps {
@@ -17,7 +18,7 @@ export function DeleteConfirmationDialog({
 }: DeleteConfirmationDialogProps) {
   if (!isOpen) return null
 
-  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleBackdropClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
       onClose()
     }
