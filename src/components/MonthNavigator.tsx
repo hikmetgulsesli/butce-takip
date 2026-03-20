@@ -25,6 +25,7 @@ interface MonthNavigatorProps {
   /** Current selected date */
   selectedDate: Date
   /** Callback when month changes */
+  // eslint-disable-next-line no-unused-vars
   onMonthChange: (date: Date) => void
   /** Optional CSS class */
   className?: string
