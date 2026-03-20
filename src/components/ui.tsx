@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+export { CategoryPieChart } from './CategoryPieChart'
 
 interface CardProps {
   children: ReactNode
