@@ -1,7 +1,5 @@
 import { ReactNode } from 'react'
 
-export { TransactionList } from './TransactionList'
-
 interface CardProps {
   children: ReactNode
   className?: string

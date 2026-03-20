@@ -1,132 +1,354 @@
 /**
- * Dashboard Page (404 Page Design)
- * US-004: Transaction Form Component - Design Contract
+ * DashboardPage - Main Dashboard
+ * US-012: Integration Wiring & End-to-End Verification
  * 
- * Implements screen: 0bae06ebde8c4b768177b533638acde1
+ * Main dashboard with summary cards, category chart, and recent transactions
+ * Implements screen: 7af73b4a20734d9895e9ec36228aee56 (Bütçe Takip Dashboard)
  */
 
-import { Link } from 'react-router-dom'
+import { useState, useMemo } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { useTransactions } from '../hooks'
+import { getCategory } from '../constants/categories'
+import {
+  Landmark,
+  ChevronLeft,
+  ChevronRight,
+  TrendingUp,
+  TrendingDown,
+  ArrowUp,
+  ArrowDown,
+  Info,
+  Plus,
+  Home,
+  ShoppingCart,
+  Car,
+  Receipt,
+  Utensils,
+  Wallet,
+  Banknote,
+  ArrowRight,
+  MoreHorizontal,
+  Heart
+} from 'lucide-react'
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts'
+
+// Icon mapping for categories
+const categoryIcons: Record<string, React.ReactNode> = {
+  yemek: <Utensils className="w-4 h-4" />,
+  ulasim: <Car className="w-4 h-4" />,
+  fatura: <Receipt className="w-4 h-4" />,
+  eglence: <Wallet className="w-4 h-4" />,
+  saglik: <Heart className="w-4 h-4" />,
+  'diger-gider': <MoreHorizontal className="w-4 h-4" />,
+  maas: <Banknote className="w-4 h-4" />,
+  firsat: <TrendingUp className="w-4 h-4" />,
+  yatirim: <TrendingUp className="w-4 h-4" />,
+  'diger-gelir': <MoreHorizontal className="w-4 h-4" />,
+  home: <Home className="w-4 h-4" />,
+  shopping: <ShoppingCart className="w-4 h-4" />,
+}
+
+const COLORS = ['#3b82f6', '#22c55e', '#f59e0b', '#64748b']
 
 export function DashboardPage() {
+  const navigate = useNavigate()
+  const { transactions, getIncomeTotal, getExpenseTotal, getBalance } = useTransactions()
+  const [currentDate, setCurrentDate] = useState(new Date())
+
+  const currentYear = currentDate.getFullYear()
+  const currentMonth = currentDate.getMonth()
+  const monthName = currentDate.toLocaleDateString('tr-TR', { month: 'long', year: 'numeric' })
+
+  // Calculate totals
+  const totalIncome = getIncomeTotal(currentYear, currentMonth)
+  const totalExpense = getExpenseTotal(currentYear, currentMonth)
+  const balance = getBalance(currentYear, currentMonth)
+
+  // Get category breakdown for pie chart
+  const categoryData = useMemo(() => {
+    const expensesByCategory: Record<string, number> = {}
+    
+    transactions
+      .filter(t => {
+        const tDate = new Date(t.date)
+        return tDate.getFullYear() === currentYear && 
+               tDate.getMonth() === currentMonth && 
+               t.type === 'expense'
+      })
+      .forEach(t => {
+        expensesByCategory[t.category] = (expensesByCategory[t.category] || 0) + t.amount
+      })
+
+    return Object.entries(expensesByCategory)
+      .map(([category, amount]) => {
+        const cat = getCategory(category)
+        return {
+          name: cat?.name || category,
+          value: amount,
+          category
+        }
+      })
+      .sort((a, b) => b.value - a.value)
+      .slice(0, 4)
+  }, [transactions, currentYear, currentMonth])
+
+  // Get recent transactions
+  const recentTransactions = useMemo(() => {
+    return transactions
+      .filter(t => {
+        const tDate = new Date(t.date)
+        return tDate.getFullYear() === currentYear && tDate.getMonth() === currentMonth
+      })
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+      .slice(0, 5)
+  }, [transactions, currentYear, currentMonth])
+
+  const handlePreviousMonth = () => {
+    setCurrentDate(prev => new Date(prev.getFullYear(), prev.getMonth() - 1, 1))
+  }
+
+  const handleNextMonth = () => {
+    setCurrentDate(prev => new Date(prev.getFullYear(), prev.getMonth() + 1, 1))
+  }
+
+  const handleAddTransaction = () => {
+    navigate('/ekle')
+  }
+
+  const formatAmount = (amount: number) => {
+    return amount.toLocaleString('tr-TR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+  }
+
+  const formatDate = (date: Date | string) => {
+    return new Date(date).toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })
+  }
+
   return (
-    <div className="relative flex h-screen w-full flex-col overflow-x-hidden">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 min-h-screen bg-slate-50 dark:bg-slate-900">
       {/* Header */}
-      <header className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 px-6 py-4 lg:px-20">
+      <header className="flex items-center justify-between mb-8 border-b border-slate-200 dark:border-slate-800 pb-5">
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-primary/10 rounded-lg text-primary">
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-            </svg>
+          <div className="bg-primary p-2 rounded-lg">
+            <Landmark className="w-6 h-6 text-white" />
           </div>
-          <h2 className="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight font-heading">
-            Kişisel Bütçe Takip
-          </h2>
+          <h1 className="text-2xl font-semibold tracking-tight text-slate-900 dark:text-white font-heading">
+            Bütçe Takip
+          </h1>
         </div>
-        <div className="flex gap-3">
-          <button 
-            className="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-surface text-slate-600 dark:text-slate-300 hover:text-primary transition-colors cursor-pointer"
-            aria-label="Bildirimler"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-            </svg>
-          </button>
-          <button 
-            className="flex items-center justify-center rounded-lg h-10 w-10 bg-slate-100 dark:bg-surface text-slate-600 dark:text-slate-300 hover:text-primary transition-colors cursor-pointer"
-            aria-label="Ayarlar"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            </svg>
-          </button>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="flex-1 flex items-center justify-center p-6 relative overflow-hidden">
-        {/* Decorative Ghosted Icons */}
-        <div className="absolute top-20 left-10 opacity-5 dark:opacity-10 pointer-events-none transform -rotate-12">
-          <svg className="w-32 h-32" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.67 0-1.72 1.39-2.84 3.11-3.21V4h2.67v1.95c1.86.45 2.79 1.86 2.85 3.39H14.3c-.05-1.11-.64-1.87-2.22-1.87-1.5 0-2.4.68-2.4 1.64 0 .84.65 1.39 2.67 1.91s4.18 1.39 4.18 3.91c-.01 1.83-1.38 2.83-3.12 3.16z"/>
-          </svg>
-        </div>
-        <div className="absolute bottom-20 right-10 opacity-5 dark:opacity-10 pointer-events-none transform rotate-12">
-          <svg className="w-32 h-32" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
-          </svg>
-        </div>
-        <div className="absolute top-1/2 left-1/4 opacity-5 dark:opacity-10 pointer-events-none">
-          <svg className="w-24 h-24" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
-          </svg>
-        </div>
-
-        <div className="max-w-md w-full text-center z-10">
-          <div className="mb-8">
-            <h1 className="text-primary font-heading font-bold text-9xl tracking-tighter opacity-20 select-none">404</h1>
-            <div className="-mt-16 relative">
-              <svg className="w-20 h-20 mx-auto text-primary bg-slate-50 dark:bg-slate-900 px-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
-          </div>
-          <div className="space-y-4">
-            <h2 className="text-3xl font-heading font-bold text-slate-900 dark:text-white">Sayfa Bulunamadı</h2>
-            <p className="text-slate-500 dark:text-slate-400 text-lg">
-              Aradığınız sayfa mevcut değil veya taşınmış olabilir.
-            </p>
-          </div>
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              to="/" 
-              className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-primary text-white rounded-xl font-bold transition-all hover:bg-primary-dark hover:shadow-lg hover:shadow-primary/20"
+        <div className="flex items-center gap-6">
+          <div className="flex items-center bg-slate-100 dark:bg-surface rounded-xl p-1 border border-slate-200 dark:border-slate-700">
+            <button 
+              onClick={handlePreviousMonth}
+              className="p-2 hover:bg-white dark:hover:bg-slate-700 rounded-lg transition-colors cursor-pointer"
+              aria-label="Önceki Ay"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-              </svg>
-              <span>Ana Sayfaya Dön</span>
-            </Link>
-            <button className="inline-flex items-center justify-center gap-2 px-8 py-3 bg-slate-200 dark:bg-surface text-slate-700 dark:text-slate-200 rounded-xl font-bold transition-all hover:bg-slate-300 dark:hover:bg-slate-700 cursor-pointer">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-              <span>Yardım Al</span>
+              <ChevronLeft className="w-5 h-5 text-slate-600 dark:text-slate-400" />
+            </button>
+            <span className="px-4 font-semibold text-sm text-slate-900 dark:text-white">{monthName}</span>
+            <button 
+              onClick={handleNextMonth}
+              className="p-2 hover:bg-white dark:hover:bg-slate-700 rounded-lg transition-colors cursor-pointer"
+              aria-label="Sonraki Ay"
+            >
+              <ChevronRight className="w-5 h-5 text-slate-600 dark:text-slate-400" />
             </button>
           </div>
         </div>
-      </main>
+      </header>
 
-      {/* Footer */}
-      <footer className="py-8 px-6 text-center border-t border-slate-200 dark:border-slate-800">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto opacity-60">
-          <div className="flex flex-col items-center gap-2">
-            <div className="w-12 h-12 rounded-full bg-slate-100 dark:bg-surface flex items-center justify-center">
-              <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.488 9H15V3.512A9.025 9.025 0 0120.488 9z" />
-              </svg>
+      {/* KPI Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        {/* Total Income */}
+        <div className="bg-white dark:bg-surface p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-slate-500 dark:text-slate-400 font-medium font-body">Toplam Gelir</span>
+            <div className="bg-income/10 p-2 rounded-lg">
+              <TrendingUp className="w-5 h-5 text-income" />
             </div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">Harcama Analizi</p>
           </div>
-          <div className="flex flex-col items-center gap-2">
-            <div className="w-12 h-12 rounded-full bg-slate-100 dark:bg-surface flex items-center justify-center">
-              <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3" />
-              </svg>
-            </div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">Varlık Yönetimi</p>
-          </div>
-          <div className="flex flex-col items-center gap-2">
-            <div className="w-12 h-12 rounded-full bg-slate-100 dark:bg-surface flex items-center justify-center">
-              <svg className="w-6 h-6 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-              </svg>
-            </div>
-            <p className="text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-400">Yatırım Takibi</p>
+          <div className="text-3xl font-bold text-income font-heading">{formatAmount(totalIncome)} TL</div>
+          <div className="mt-2 text-sm text-income flex items-center gap-1 font-body">
+            <ArrowUp className="w-3 h-3" />
+            <span>Bu ay</span>
           </div>
         </div>
-      </footer>
+
+        {/* Total Expense */}
+        <div className="bg-white dark:bg-surface p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-slate-500 dark:text-slate-400 font-medium font-body">Toplam Gider</span>
+            <div className="bg-expense/10 p-2 rounded-lg">
+              <TrendingDown className="w-5 h-5 text-expense" />
+            </div>
+          </div>
+          <div className="text-3xl font-bold text-expense font-heading">{formatAmount(totalExpense)} TL</div>
+          <div className="mt-2 text-sm text-expense flex items-center gap-1 font-body">
+            <ArrowDown className="w-3 h-3" />
+            <span>Bu ay</span>
+          </div>
+        </div>
+
+        {/* Balance */}
+        <div className="bg-white dark:bg-surface p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <div className="flex items-center justify-between mb-4">
+            <span className="text-slate-500 dark:text-slate-400 font-medium font-body">Bakiye</span>
+            <div className="bg-primary/10 p-2 rounded-lg">
+              <Landmark className="w-5 h-5 text-primary" />
+            </div>
+          </div>
+          <div className={`text-3xl font-bold font-heading ${balance >= 0 ? 'text-primary' : 'text-expense'}`}>
+            {formatAmount(balance)} TL
+          </div>
+          <div className="mt-2 text-sm text-primary flex items-center gap-1 font-body">
+            <Info className="w-3 h-3" />
+            <span>Kalan bütçe</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Category Chart */}
+        <div className="lg:col-span-1 bg-white dark:bg-surface p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+          <h2 className="text-lg font-semibold mb-6 font-heading text-slate-900 dark:text-white">
+            Kategori Bazlı Harcamalar
+          </h2>
+          <div className="relative h-64 flex items-center justify-center">
+            {categoryData.length > 0 ? (
+              <ResponsiveContainer width="100%" height="100%">
+                <PieChart>
+                  <Pie
+                    data={categoryData}
+                    cx="50%"
+                    cy="50%"
+                    innerRadius={50}
+                    outerRadius={80}
+                    paddingAngle={2}
+                    dataKey="value"
+                  >
+                    {categoryData.map((entry, index) => (
+                      <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                    ))}
+                  </Pie>
+                  <Tooltip 
+                    formatter={(value: number) => `${value.toLocaleString('tr-TR')} TL`}
+                    contentStyle={{
+                      backgroundColor: 'rgba(30, 41, 59, 0.9)',
+                      border: 'none',
+                      borderRadius: '8px',
+                      color: '#fff'
+                    }}
+                  />
+                </PieChart>
+              </ResponsiveContainer>
+            ) : (
+              <div className="text-center">
+                <div className="w-32 h-32 rounded-full border-8 border-slate-200 dark:border-slate-700 flex items-center justify-center mx-auto">
+                  <span className="text-slate-400 text-sm">Veri yok</span>
+                </div>
+              </div>
+            )}
+          </div>
+          <div className="mt-6 space-y-3">
+            {categoryData.map((item, index) => (
+              <div key={item.category} className="flex items-center justify-between text-sm">
+                <div className="flex items-center gap-2">
+                  <span className="w-3 h-3 rounded-full" style={{ backgroundColor: COLORS[index % COLORS.length] }}></span>
+                  <span className="text-slate-700 dark:text-slate-300 font-body">{item.name}</span>
+                </div>
+                <span className="font-semibold font-heading text-slate-900 dark:text-white">
+                  {((item.value / totalExpense) * 100).toFixed(0)}%
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Recent Transactions */}
+        <div className="lg:col-span-2 bg-white dark:bg-surface p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col">
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-lg font-semibold font-heading text-slate-900 dark:text-white">
+              Son İşlemler
+            </h2>
+            <button
+              onClick={handleAddTransaction}
+              className="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg flex items-center gap-2 text-sm font-semibold transition-all cursor-pointer"
+            >
+              <Plus className="w-5 h-5" />
+              İşlem Ekle
+            </button>
+          </div>
+          <div className="flex-grow overflow-x-auto">
+            {recentTransactions.length > 0 ? (
+              <table className="w-full text-left">
+                <thead>
+                  <tr className="text-slate-500 text-xs uppercase tracking-wider border-b border-slate-200 dark:border-slate-700 font-body">
+                    <th className="pb-3 font-medium">Tarih</th>
+                    <th className="pb-3 font-medium">Kategori</th>
+                    <th className="pb-3 font-medium">Açıklama</th>
+                    <th className="pb-3 font-medium text-right">Tutar</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
+                  {recentTransactions.map((transaction) => {
+                    const category = getCategory(transaction.category)
+                    const icon = categoryIcons[transaction.category] || categoryIcons['diger-gider']
+                    
+                    return (
+                      <tr key={transaction.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-colors">
+                        <td className="py-4 text-sm whitespace-nowrap text-slate-600 dark:text-slate-400 font-body">
+                          {formatDate(transaction.date)}
+                        </td>
+                        <td className="py-4">
+                          <div className="flex items-center gap-2">
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
+                              transaction.type === 'income' 
+                                ? 'bg-income/10 text-income' 
+                                : 'bg-primary/10 text-primary'
+                            }`}>
+                              {icon}
+                            </div>
+                            <span className="text-sm text-slate-700 dark:text-slate-300 font-body">
+                              {category?.name || transaction.category}
+                            </span>
+                          </div>
+                        </td>
+                        <td className="py-4 text-sm text-slate-600 dark:text-slate-400 font-body">
+                          {transaction.description || '-'}
+                        </td>
+                        <td className={`py-4 text-sm font-bold text-right font-heading ${
+                          transaction.type === 'income' ? 'text-income' : 'text-expense'
+                        }`}>
+                          {transaction.type === 'income' ? '+' : '-'}{formatAmount(transaction.amount)} TL
+                        </td>
+                      </tr>
+                    )
+                  })}
+                </tbody>
+              </table>
+            ) : (
+              <div className="text-center py-12">
+                <p className="text-slate-500 dark:text-slate-400 font-body">Henüz işlem bulunmuyor</p>
+                <button 
+                  onClick={handleAddTransaction}
+                  className="mt-4 text-primary hover:text-primary/80 font-semibold text-sm cursor-pointer"
+                >
+                  İlk işlemi ekle
+                </button>
+              </div>
+            )}
+          </div>
+          <div className="mt-6 pt-4 border-t border-slate-200 dark:border-slate-700 text-center">
+            <Link 
+              to="/islemler" 
+              className="text-primary hover:text-primary/80 font-semibold text-sm inline-flex items-center gap-1 transition-colors font-body"
+            >
+              Tümünü Gör
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   )
 }
