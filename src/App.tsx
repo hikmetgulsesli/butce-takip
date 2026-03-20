@@ -1,22 +1,41 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+/**
+ * App.tsx - Main Application Router
+ * US-012: Integration Wiring & End-to-End Verification
+ * 
+ * Wire all components into App.tsx with React Router.
+ * Routes: '/' for Dashboard, '/ekle' for adding a transaction, '/islemler' for full transaction list, '*' for ErrorPage.
+ */
+
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { DashboardPage } from './pages/DashboardPage'
-import { AddTransactionPage } from './pages/AddTransactionPage'
 import { IslemListesiPage } from './pages/IslemListesiPage'
-import { ErrorPage, NotFoundPage } from './pages/ErrorPage'
+import { AddTransactionPage } from './pages/AddTransactionPage'
+import { ErrorPage } from './pages/ErrorPage'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <DashboardPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/ekle',
+    element: <AddTransactionPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '/islemler',
+    element: <IslemListesiPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: '*',
+    element: <ErrorPage />,
+  },
+])
 
 function App() {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<DashboardPage />} />
-        <Route path="/islem-ekle" element={<AddTransactionPage />} />
-        <Route path="/islemler" element={<IslemListesiPage />} />
-        <Route path="/hata" element={<ErrorPage />} />
-        <Route path="/404" element={<NotFoundPage />} />
-        <Route path="*" element={<Navigate to="/404" replace />} />
-      </Routes>
-    </BrowserRouter>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
