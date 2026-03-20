@@ -15,6 +15,9 @@ export function Card({ children, className = '' }: CardProps) {
   )
 }
 
+// Re-export SummaryCard for unified component imports
+export { SummaryCard } from './SummaryCard'
+
 interface ButtonProps {
   variant?: 'primary' | 'secondary' | 'danger'
   children: ReactNode
