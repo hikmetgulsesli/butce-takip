@@ -20,6 +20,7 @@ export default [
         console: 'readonly',
         window: 'readonly',
         navigator: 'readonly',
+        Storage: 'readonly',
       },
     },
     plugins: {
@@ -30,6 +31,7 @@ export default [
     rules: {
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': 'warn',
+      'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
     },
   },
