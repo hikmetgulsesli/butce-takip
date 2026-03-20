@@ -131,7 +131,8 @@ export function IslemListesiPage() {
   }
 
   const formatDate = (dateStr: string) => {
-    const date = new Date(dateStr)
+    const safeDateStr = dateStr.includes('T') ? dateStr : `${dateStr}T00:00:00`
+    const date = new Date(safeDateStr)
     return date.toLocaleDateString('tr-TR', { day: 'numeric', month: 'long', year: 'numeric' })
   }
 
@@ -165,7 +166,7 @@ export function IslemListesiPage() {
               Tüm İşlemler
             </h1>
             <nav className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
-              <Link to="/" className="hover:text-primary cursor-pointer">Dashboard</Link>
+              <Link to="/" className="hover:text-primary cursor-pointer">Ana Sayfa</Link>
               <ChevronRight className="w-3 h-3" />
               <span className="text-primary font-medium">İşlemler</span>
             </nav>
@@ -253,7 +254,7 @@ export function IslemListesiPage() {
                         </div>
                         <button
                           onClick={() => handleDeleteClick(transaction)}
-                          className="p-2 opacity-0 group-hover:opacity-100 text-slate-400 hover:text-rose-500 hover:bg-rose-500/10 rounded-lg transition-all duration-200 cursor-pointer"
+                          className="p-2 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 text-slate-400 hover:text-rose-500 hover:bg-rose-500/10 rounded-lg transition-all duration-200 cursor-pointer"
                           aria-label="Sil"
                         >
                           <Trash2 className="w-5 h-5" />

@@ -3,7 +3,7 @@
  * US-012: Integration Wiring & End-to-End Verification
  * 
  * Wire all components into App.tsx with React Router.
- * Routes: '/' for Dashboard, '/islemler' for full transaction list, '*' for ErrorPage.
+ * Routes: '/' for Dashboard, '/ekle' for adding a transaction, '/islemler' for full transaction list, '*' for ErrorPage.
  */
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -21,10 +21,12 @@ const router = createBrowserRouter([
   {
     path: '/ekle',
     element: <AddTransactionPage />,
+    errorElement: <ErrorPage />,
   },
   {
     path: '/islemler',
     element: <IslemListesiPage />,
+    errorElement: <ErrorPage />,
   },
   {
     path: '*',
